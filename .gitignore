@@ -1,0 +1,20 @@
+# Flutter build
+build/
+*.apk
+*.ipa
+
+# IDE settings
+.vscode/
+.idea/
+*.iml
+
+# Flutter
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+.pub-cache/
+.melos_tool/
+
+# Environment files
+.env
