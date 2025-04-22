@@ -55,7 +55,7 @@ class Repositoryhotelsignup {
         return response.data["img"];
       }
     } catch (e) {
-      return "loi";
+      return "Thông Tin Đăng Nhập Không Đúng";
     }
   }
     void removeData() {
