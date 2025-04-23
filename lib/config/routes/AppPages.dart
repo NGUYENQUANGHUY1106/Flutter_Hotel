@@ -58,5 +58,9 @@ class AppPages {
         name: AppRoutes.hotelDetailBooked,
         page: () => const HotelDetailBooked(),
         binding: Bindinghoteldetailbooked()),
+    GetPage(
+      name: AppRoutes.home,
+      page: () => const UserHomeScreen(),
+    ),
   ];
 }

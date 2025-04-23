@@ -44,21 +44,20 @@ class UserHomeScreen extends GetView<Controllerhomeuser> {
                   ),
                   SliverToBoxAdapter(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: SizedBox(
-                        height: 270,
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          itemCount: controller.hotels.length,
-                          itemBuilder: (context, index) {
-                            return Container(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 10, horizontal: 12),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Wrap(
+                          spacing: 10,
+                          runSpacing: 10,
+                          children: controller.hotels.map((hotel) {
+                            return SizedBox(
                               width: 200,
-                              margin: const EdgeInsets.only(right: 10),
-                              child:
-                                  BoxItemHotel(hotel: controller.hotels[index]),
+                              height: 270,
+                              child: BoxItemHotel(hotel: hotel),
                             );
-                          },
+                          }).toList(),
                         ),
                       ),
                     ),

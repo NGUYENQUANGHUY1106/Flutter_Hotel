@@ -100,7 +100,7 @@ class DetailHotelScreen extends GetView<ControllerDetaiHotel> {
                           color: Colors.red,
                         ),
                         child: Text(
-                          "${controller.hotel.price}k/đêm",
+                          "${controller.hotel.price}VNĐ/đêm",
                           style:
                               TextStyle(fontSize: 14.sp, color: Colors.white),
                         ),
@@ -154,8 +154,8 @@ class DetailHotelScreen extends GetView<ControllerDetaiHotel> {
                         controller: controller.endDate,
                         decoration: const InputDecoration(
                             prefixIcon: Icon(Icons.calendar_month),
-                            hintText: "Ngày nhận phòng",
-                            label: Text("Ngày nhận phòng")),
+                            hintText: "Ngày trả phòng",
+                            label: Text("Ngày trả phòng")),
                       ),
                     ),
                   ),

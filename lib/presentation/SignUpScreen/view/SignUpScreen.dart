@@ -3,6 +3,7 @@ import 'package:book_hotel/presentation/LoadingScreen.dart';
 import 'package:book_hotel/presentation/SignUpScreen/controller/ControllerSignUp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:book_hotel/config/routes/appRoutes.dart';
 import 'package:get/get.dart';
 
 class Signupscreen extends GetView<Controllersignup> {

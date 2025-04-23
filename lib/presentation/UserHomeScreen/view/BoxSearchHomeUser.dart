@@ -63,7 +63,7 @@ class BoxSearchHomeUser extends GetView<Controllerhomeuser> {
                   Icons.hotel,
                   color: Colors.blue,
                 ),
-                hintText: "Tên khách sạn",
+                hintText: "Tên khách sạn ",
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(10.r)),
                   borderSide: const BorderSide(color: Colors.transparent),
