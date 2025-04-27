@@ -32,22 +32,25 @@ class ControllerDetaiHotel extends GetxController {
     prefs = GetIt.I<SharedPreferences>();
     print('Thông tin hotel trước khi fetch: ${hotel.toJson()}');
     fetchHotelDetail(hotel.id!); // phải là hotel.id
-    print('Token: ${prefs.getString('token')}');
+    // print('Token: ${prefs.getString('token')}');
   }
 
 Future<void> fetchHotelDetail(int idHotel) async {
   try {
-    // print('Fetching hotel id: $idHotel');  
-    // print('Fetching URL: http://192.168.88.53:8080/hotel/$idHotel');
-   final response = await dio.get("http://192.168.88.53:8080/hotel/$idHotel");
+    final response = await dio.get("http://192.168.88.53:8080/hotel/$idHotel");
 
-    print('Response data: ${response.data}'); // Thêm dòng này
     hotelDetail.value = HotelModel.fromMap(response.data);
-    // print('Hotel room: ${hotelDetail.value?.room}'); // In ra số phòng xem
+
+    hotel.room = hotelDetail.value?.room;
+    hotel.price = hotelDetail.value?.price;
+    hotel.username = hotelDetail.value?.username;
+    hotel.address = hotelDetail.value?.address;
+    hotel.img = hotelDetail.value?.img;
   } catch (e) {
-    // print('Lỗi fetchHotelDetail: $e');
+    print('Lỗi fetchHotelDetail: $e');
   }
 }
+
 
 
 

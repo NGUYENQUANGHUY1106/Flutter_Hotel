@@ -37,13 +37,24 @@ class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
                           color: Colors.black,
                         ),
                       ),
-                      IconButton(
-                        onPressed: () {},
-                        icon: Icon(
-                          Icons.favorite,
-                          color: Colors.white,
-                          size: 25.w,
-                        ),
+                      Row(
+                        children: [
+                          IconButton(
+                            icon: Icon(Icons.refresh, color: Colors.blue),
+                            onPressed: () async {
+                              await controller
+                                  .fetchHotelDetail(controller.hotel.id!);
+                            },
+                          ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.favorite,
+                              color: Colors.red[500],
+                              size: 25.w,
+                            ),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -166,9 +177,8 @@ class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
                   SizedBox(height: 20.h),
                   Obx(() => Row(
                         children: [
-                          Icon(Icons.meeting_room,
-                              color: Colors.green), // 🏨 icon phòng
-                          SizedBox(width: 6), // Khoảng cách giữa icon và text
+                          Icon(Icons.meeting_room, color: Colors.green),
+                          SizedBox(width: 6),
                           Text(
                             'Số phòng trống: ${controller.hotelDetail.value?.room ?? controller.hotel.room ?? 0}',
                             style: TextStyle(
