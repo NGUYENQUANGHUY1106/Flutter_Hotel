@@ -13,20 +13,20 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->D:\DACS3\flutter_hotel\android\app\src\debug\AndroidManifest.xml:6:5-66
-15-->D:\DACS3\flutter_hotel\android\app\src\debug\AndroidManifest.xml:6:22-64
+15-->D:\DACS3\Flutter_Hotel\android\app\src\debug\AndroidManifest.xml:6:5-66
+15-->D:\DACS3\Flutter_Hotel\android\app\src\debug\AndroidManifest.xml:6:22-64
 16    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
-16-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:2:5-75
-16-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:2:22-73
+16-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:2:5-75
+16-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:2:22-73
 17    <uses-permission android:name="android.permission.CAMERA" />
-17-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:3:5-64
-17-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:3:22-62
+17-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:3:5-64
+17-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:3:22-62
 18    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-18-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:4:5-79
-18-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:4:22-77
+18-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:4:5-79
+18-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:4:22-77
 19    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-19-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:5:5-80
-19-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:5:22-78
+19-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:5:5-80
+19-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:5:22-78
 20    <!--
 21 Required to query activities that can process text, see:
 22         https://developer.android.com/training/package-visibility and
@@ -35,25 +35,25 @@
 25         In particular, this is used by the Flutter engine in io.flutter.plugin.text.ProcessTextPlugin.
 26    -->
 27    <queries>
-27-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:43:5-48:15
+27-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:43:5-48:15
 28        <intent>
-28-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:44:9-47:18
+28-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:44:9-47:18
 29            <action android:name="android.intent.action.PROCESS_TEXT" />
-29-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:45:13-72
-29-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:45:21-70
+29-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:45:13-72
+29-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:45:21-70
 30
 31            <data android:mimeType="text/plain" />
-31-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:46:13-50
-31-->D:\DACS3\flutter_hotel\android\app\src\main\AndroidManifest.xml:46:19-48
+31-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:46:13-50
+31-->D:\DACS3\Flutter_Hotel\android\app\src\main\AndroidManifest.xml:46:19-48
 32        </intent>
 33    </queries>
 34
 35    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-35-->[:flutter_webview_plugin_ios_android] D:\DACS3\flutter_hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-13:48
-35-->[:flutter_webview_plugin_ios_android] D:\DACS3\flutter_hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-63
+35-->[:flutter_webview_plugin_ios_android] D:\DACS3\Flutter_Hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:5-13:48
+35-->[:flutter_webview_plugin_ios_android] D:\DACS3\Flutter_Hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:9-63
 36    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-36-->[:flutter_webview_plugin_ios_android] D:\DACS3\flutter_hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:5-81
-36-->[:flutter_webview_plugin_ios_android] D:\DACS3\flutter_hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:22-78
+36-->[:flutter_webview_plugin_ios_android] D:\DACS3\Flutter_Hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:5-81
+36-->[:flutter_webview_plugin_ios_android] D:\DACS3\Flutter_Hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:22-78
 37
 38    <permission
 38-->[androidx.core:core:1.13.1] C:\Users\nguye\.gradle\caches\transforms-3\2f6a5506f4dac22f7ab67b13b215ea43\transformed\core-1.13.1\AndroidManifest.xml:22:5-24:47
@@ -109,71 +109,71 @@
 83            android:value="2" />
 84
 85        <provider
-85-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:9-19:20
+85-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:9-19:20
 86            android:name="io.flutter.plugins.imagepicker.ImagePickerFileProvider"
-86-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-82
+86-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-82
 87            android:authorities="com.example.book_hotel.flutter.image_provider"
-87-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-74
+87-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-74
 88            android:exported="false"
-88-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-37
+88-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:14:13-37
 89            android:grantUriPermissions="true" >
-89-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-47
+89-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:15:13-47
 90            <meta-data
-90-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-18:75
+90-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-18:75
 91                android:name="android.support.FILE_PROVIDER_PATHS"
-91-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-67
+91-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-67
 92                android:resource="@xml/flutter_image_picker_file_paths" />
-92-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:18:17-72
+92-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:18:17-72
 93        </provider> <!-- Trigger Google Play services to install the backported photo picker module. -->
 94        <service
-94-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:21:9-33:19
+94-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:21:9-33:19
 95            android:name="com.google.android.gms.metadata.ModuleDependencies"
-95-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:22:13-78
+95-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:22:13-78
 96            android:enabled="false"
-96-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-36
+96-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:23:13-36
 97            android:exported="false" >
-97-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:24:13-37
+97-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:24:13-37
 98            <intent-filter>
-98-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-28:29
+98-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:26:13-28:29
 99                <action android:name="com.google.android.gms.metadata.MODULE_DEPENDENCIES" />
-99-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-94
-99-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:25-91
+99-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:17-94
+99-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:27:25-91
 100            </intent-filter>
 101
 102            <meta-data
-102-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-32:36
+102-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:30:13-32:36
 103                android:name="photopicker_activity:0:required"
-103-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-63
+103-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:31:17-63
 104                android:value="" />
-104-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:32:17-33
+104-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:32:17-33
 105        </service>
 106
 107        <provider
-107-->[:flutter_webview_plugin_ios_android] D:\DACS3\flutter_hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:9-26:20
+107-->[:flutter_webview_plugin_ios_android] D:\DACS3\Flutter_Hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:9-26:20
 108            android:name="androidx.core.content.FileProvider"
-108-->[:flutter_webview_plugin_ios_android] D:\DACS3\flutter_hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-62
+108-->[:flutter_webview_plugin_ios_android] D:\DACS3\Flutter_Hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:18:13-62
 109            android:authorities="com.example.book_hotel.fileprovider"
-109-->[:flutter_webview_plugin_ios_android] D:\DACS3\flutter_hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:19:13-64
+109-->[:flutter_webview_plugin_ios_android] D:\DACS3\Flutter_Hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:19:13-64
 110            android:exported="false"
-110-->[:flutter_webview_plugin_ios_android] D:\DACS3\flutter_hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-37
+110-->[:flutter_webview_plugin_ios_android] D:\DACS3\Flutter_Hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:20:13-37
 111            android:grantUriPermissions="true" >
-111-->[:flutter_webview_plugin_ios_android] D:\DACS3\flutter_hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-47
+111-->[:flutter_webview_plugin_ios_android] D:\DACS3\Flutter_Hotel\build\flutter_webview_plugin_ios_android\intermediates\merged_manifest\debug\AndroidManifest.xml:21:13-47
 112            <meta-data
-112-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-18:75
+112-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:16:13-18:75
 113                android:name="android.support.FILE_PROVIDER_PATHS"
-113-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-67
+113-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:17:17-67
 114                android:resource="@xml/filepaths" />
-114-->[:image_picker_android] D:\DACS3\flutter_hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:18:17-72
+114-->[:image_picker_android] D:\DACS3\Flutter_Hotel\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:18:17-72
 115        </provider>
 116
 117        <activity
-117-->[:url_launcher_android] D:\DACS3\flutter_hotel\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
+117-->[:url_launcher_android] D:\DACS3\Flutter_Hotel\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:10:9-13:74
 118            android:name="io.flutter.plugins.urllauncher.WebViewActivity"
-118-->[:url_launcher_android] D:\DACS3\flutter_hotel\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
+118-->[:url_launcher_android] D:\DACS3\Flutter_Hotel\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:11:13-74
 119            android:exported="false"
-119-->[:url_launcher_android] D:\DACS3\flutter_hotel\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
+119-->[:url_launcher_android] D:\DACS3\Flutter_Hotel\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:12:13-37
 120            android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-120-->[:url_launcher_android] D:\DACS3\flutter_hotel\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
+120-->[:url_launcher_android] D:\DACS3\Flutter_Hotel\build\url_launcher_android\intermediates\merged_manifest\debug\AndroidManifest.xml:13:13-71
 121
 122        <uses-library
 122-->[androidx.window:window:1.0.0-beta04] C:\Users\nguye\.gradle\caches\transforms-3\f302e75fb7efd781bcf1a29281c188da\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:25:9-27:40

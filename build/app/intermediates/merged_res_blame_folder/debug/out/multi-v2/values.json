@@ -76,25 +76,6 @@
                     }
                 },
                 {
-                    "source": "D:\\DACS3\\flutter_hotel\\android\\app\\src\\main\\res\\values\\styles.xml",
-                    "from": {
-                        "startLines": "3,14",
-                        "startColumns": "4,4",
-                        "startOffsets": "176,832",
-                        "endLines": "7,16",
-                        "endColumns": "12,12",
-                        "endOffsets": "483,998"
-                    },
-                    "to": {
-                        "startLines": "4757,4849",
-                        "startColumns": "4,4",
-                        "startOffsets": "319015,325240",
-                        "endLines": "4760,4851",
-                        "endColumns": "12,12",
-                        "endOffsets": "319191,325404"
-                    }
-                },
-                {
                     "source": "C:\\Users\\nguye\\.gradle\\caches\\transforms-3\\62fae99f55940d2254926af7935b5c6b\\transformed\\jetified-viewpager2-1.0.0\\res\\values\\values.xml",
                     "from": {
                         "startLines": "2",
@@ -331,6 +312,25 @@
                         "startOffsets": "30542,30600,30666,30729,52429,52500,99011,99547,99614,99693",
                         "endColumns": "57,65,62,61,70,71,67,66,78,68",
                         "endOffsets": "30595,30661,30724,30786,52495,52567,99074,99609,99688,99757"
+                    }
+                },
+                {
+                    "source": "D:\\DACS3\\Flutter_Hotel\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "from": {
+                        "startLines": "3,14",
+                        "startColumns": "4,4",
+                        "startOffsets": "176,832",
+                        "endLines": "7,16",
+                        "endColumns": "12,12",
+                        "endOffsets": "483,998"
+                    },
+                    "to": {
+                        "startLines": "4757,4849",
+                        "startColumns": "4,4",
+                        "startOffsets": "319015,325240",
+                        "endLines": "4760,4851",
+                        "endColumns": "12,12",
+                        "endOffsets": "319191,325404"
                     }
                 },
                 {

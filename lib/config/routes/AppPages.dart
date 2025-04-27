@@ -44,7 +44,8 @@ class AppPages {
     ),
     GetPage(
         name: AppRoutes.detailHotelScreen,
-        page: () => const DetailHotelScreen(),
+       page: () => const HotelDetailScreen(),
+
         binding: Detailhotelbinding()),
     GetPage(
         name: AppRoutes.detailBooked,

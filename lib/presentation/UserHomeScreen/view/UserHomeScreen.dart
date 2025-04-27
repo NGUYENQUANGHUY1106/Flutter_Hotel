@@ -8,6 +8,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:book_hotel/presentation/UserHomeScreen/view/BoxListCityGrid.dart';
 import 'package:book_hotel/presentation/UserHomeScreen/view/SimpleImageSlider.dart';
+import 'package:book_hotel/presentation/DetailHotelScreen/view/DetailHotelScreen.dart';
+import 'package:book_hotel/presentation/DetailHotelScreen/view/DetailHotelScreen.dart';
 
 class UserHomeScreen extends GetView<Controllerhomeuser> {
   const UserHomeScreen({super.key});
@@ -52,12 +54,20 @@ class UserHomeScreen extends GetView<Controllerhomeuser> {
                           spacing: 10,
                           runSpacing: 10,
                           children: controller.hotels.map((hotel) {
-                            return SizedBox(
-                              width: 200,
-                              height: 270,
-                              child: BoxItemHotel(hotel: hotel),
-                            );
-                          }).toList(),
+  return GestureDetector(
+   onTap: () {
+  print("Hotel ID: ${hotel.id}");  // <-- hotel.id phải là ID của bảng hotel (ví dụ 10, 11, 12).
+  Get.to(() => HotelDetailScreen(), arguments: hotel);
+},
+
+    child: SizedBox(
+      width: 200,
+      height: 270,
+      child: BoxItemHotel(hotel: hotel),
+    ),
+  );
+}).toList()
+
                         ),
                       ),
                     ),

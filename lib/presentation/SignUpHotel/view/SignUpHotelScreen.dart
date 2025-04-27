@@ -149,6 +149,17 @@ class SignUpHotelScreen extends GetView<Controllersignuphotel> {
                           SizedBox(
                             height: 20.h,
                           ),
+                          TextField(
+                            controller: controller.room,
+                            keyboardType: TextInputType.number,
+                            decoration: const InputDecoration(
+                                prefixIcon: Icon(Icons.meeting_room),
+                                label: Text("Số phòng trống"),
+                                hintText: "Nhập số phòng trống"),
+                          ),
+                           SizedBox(
+                            height: 20.h,
+                          ),
                           Obx(
                             () => GestureDetector(
                               onTap: () => controller.pickImage(),

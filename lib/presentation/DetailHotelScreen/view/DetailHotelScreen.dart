@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-class DetailHotelScreen extends GetView<ControllerDetaiHotel> {
-  const DetailHotelScreen({super.key});
+class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
+  const HotelDetailScreen({super.key}); // ✅ Đúng 1 constructor duy nhất
+  // const DetailHotelScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,39 +31,39 @@ class DetailHotelScreen extends GetView<ControllerDetaiHotel> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
-                          onPressed: () => Get.back(),
-                          icon: const Icon(
-                            Icons.arrow_back,
-                            color: Colors.black,
-                          )),
+                        onPressed: () => Get.back(),
+                        icon: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.black,
+                        ),
+                      ),
                       IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.favorite,
-                            color: Colors.white,
-                            size: 25.w,
-                          ))
+                        onPressed: () {},
+                        icon: Icon(
+                          Icons.favorite,
+                          color: Colors.white,
+                          size: 25.w,
+                        ),
+                      ),
                     ],
                   ),
                 ),
               ],
             ),
-            SizedBox(
-              height: 10.h,
-            ),
+            SizedBox(height: 10.h),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 10.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    controller.hotel.username!,
-                    style:
-                        TextStyle(fontWeight: FontWeight.w600, fontSize: 20.sp),
+                    controller.hotel.username ?? '',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 20.sp,
+                    ),
                   ),
-                  SizedBox(
-                    height: 5.h,
-                  ),
+                  SizedBox(height: 5.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -73,9 +74,7 @@ class DetailHotelScreen extends GetView<ControllerDetaiHotel> {
                             avgRate: 4.5,
                             size: 23.w,
                           ),
-                          SizedBox(
-                            width: 10.w,
-                          ),
+                          SizedBox(width: 10.w),
                           Container(
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 4, vertical: 2),
@@ -89,7 +88,7 @@ class DetailHotelScreen extends GetView<ControllerDetaiHotel> {
                               style: TextStyle(
                                   fontSize: 14.sp, color: Colors.white),
                             ),
-                          )
+                          ),
                         ],
                       ),
                       Container(
@@ -100,36 +99,27 @@ class DetailHotelScreen extends GetView<ControllerDetaiHotel> {
                           color: Colors.red,
                         ),
                         child: Text(
-                          "${controller.hotel.price}VNĐ/đêm",
+                          "${controller.hotel.price ?? 0} VNĐ/đêm",
                           style:
                               TextStyle(fontSize: 14.sp, color: Colors.white),
                         ),
-                      )
+                      ),
                     ],
                   ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
+                  SizedBox(height: 10.h),
                   Row(
                     children: [
-                      const Icon(
-                        Icons.place,
-                        color: Colors.red,
-                      ),
-                      SizedBox(
-                        width: 7.w,
-                      ),
+                      const Icon(Icons.place, color: Colors.red),
+                      SizedBox(width: 7.w),
                       Expanded(
                         child: Text(
-                          "${controller.hotel.address!.detailPlace}, ${controller.hotel.address!.town}, ${controller.hotel.address!.district} ,${controller.hotel.address!.province}",
+                          "${controller.hotel.address?.detailPlace ?? ''}, ${controller.hotel.address?.town ?? ''}, ${controller.hotel.address?.district ?? ''}, ${controller.hotel.address?.province ?? ''}",
                           style: TextStyle(color: Colors.grey, fontSize: 13.sp),
                         ),
-                      )
+                      ),
                     ],
                   ),
-                  SizedBox(
-                    height: 30.h,
-                  ),
+                  SizedBox(height: 30.h),
                   GestureDetector(
                     onTap: () =>
                         controller.selectDate(context, controller.startDate),
@@ -137,15 +127,14 @@ class DetailHotelScreen extends GetView<ControllerDetaiHotel> {
                       child: TextField(
                         controller: controller.startDate,
                         decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.calendar_month),
-                            hintText: "Ngày nhận phòng",
-                            label: Text("Ngày nhận phòng")),
+                          prefixIcon: Icon(Icons.calendar_month),
+                          hintText: "Ngày nhận phòng",
+                          label: Text("Ngày nhận phòng"),
+                        ),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
+                  SizedBox(height: 20.h),
                   GestureDetector(
                     onTap: () =>
                         controller.selectDate(context, controller.endDate),
@@ -153,15 +142,14 @@ class DetailHotelScreen extends GetView<ControllerDetaiHotel> {
                       child: TextField(
                         controller: controller.endDate,
                         decoration: const InputDecoration(
-                            prefixIcon: Icon(Icons.calendar_month),
-                            hintText: "Ngày trả phòng",
-                            label: Text("Ngày trả phòng")),
+                          prefixIcon: Icon(Icons.calendar_month),
+                          hintText: "Ngày trả phòng",
+                          label: Text("Ngày trả phòng"),
+                        ),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
+                  SizedBox(height: 20.h),
                   TextField(
                     keyboardType: TextInputType.number,
                     onChanged: (value) {
@@ -172,14 +160,27 @@ class DetailHotelScreen extends GetView<ControllerDetaiHotel> {
                       } catch (e) {}
                     },
                     decoration: const InputDecoration(
-                        label: Text("Bạn muốn đặt mấy phòng?")),
+                      label: Text("Bạn muốn đặt mấy phòng?"),
+                    ),
                   ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
+                  SizedBox(height: 20.h),
+                  Obx(() => Row(
+                        children: [
+                          Icon(Icons.meeting_room,
+                              color: Colors.green), // 🏨 icon phòng
+                          SizedBox(width: 6), // Khoảng cách giữa icon và text
+                          Text(
+                            'Số phòng trống: ${controller.hotelDetail.value?.room ?? controller.hotel.room ?? 0}',
+                            style: TextStyle(
+                              color: Colors.green,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ))
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),
@@ -187,23 +188,24 @@ class DetailHotelScreen extends GetView<ControllerDetaiHotel> {
         padding: EdgeInsets.symmetric(horizontal: 20.w),
         height: 80,
         decoration: const BoxDecoration(
-            color: Colors.white,
-            boxShadow: [BoxShadow(blurRadius: 10, color: Colors.grey)]),
+          color: Colors.white,
+          boxShadow: [BoxShadow(blurRadius: 10, color: Colors.grey)],
+        ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Obx(
-              () => Text(
-                "${controller.totalPrice} VND",
-                style: TextStyle(
+            Obx(() => Text(
+                  "${controller.totalPrice} VND",
+                  style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w900,
-                    color: Colors.blue),
-              ),
-            ),
+                    color: Colors.blue,
+                  ),
+                )),
             ElevatedButton(
-                onPressed: () => controller.bookHotel(context),
-                child: const Text("Đặt phòng"))
+              onPressed: () => controller.bookHotel(context),
+              child: const Text("Đặt phòng"),
+            ),
           ],
         ),
       ),

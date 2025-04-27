@@ -27,6 +27,8 @@ class Controllersignuphotel extends GetxController {
   final pass2 = TextEditingController();
   final detailPlace = TextEditingController();
   final price = TextEditingController();
+  final room = TextEditingController();  // Số phòng trống
+
 
   final pathData = 'assets/data/ProvinceData.json';
 
@@ -61,6 +63,7 @@ class Controllersignuphotel extends GetxController {
             img: img,
             user: userModel,
             price: int.tryParse(price.text),
+            room: int.tryParse(room.text),
             username: username.text);
         isLoading.value = true;
         await repositoryhotelsignup.signUp(

@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
+
 class BoxItemHotel extends StatelessWidget {
   final HotelModel hotel;
   const BoxItemHotel({super.key, required this.hotel});
@@ -19,6 +20,7 @@ class BoxItemHotel extends StatelessWidget {
   Widget build(BuildContext context) {
      final formatCurrency = NumberFormat("#,###", "vi_VN");
     return GestureDetector(
+
       onTap: () => Get.toNamed(AppRoutes.detailHotelScreen, arguments: hotel),
       child: Container(
         
