@@ -5,6 +5,7 @@ import 'package:book_hotel/Model/RequestRateModel.dart';
 import 'package:book_hotel/core/BaseWidget/DialogCustom.dart';
 import 'package:book_hotel/core/Enum/EnumStatusBook.dart';
 import 'package:book_hotel/data/repository/RepositoryUserDetailBooked.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
@@ -22,6 +23,8 @@ class Controllerdetailbooked extends GetxController {
   final isLoading = false.obs;
   final isRateStar = false.obs;
    final isLoadingRating = false.obs;
+   final dio = Dio(); // thêm dòng này vào
+
 
   int c = 0;
   double rateStar = 0;
@@ -94,6 +97,39 @@ class Controllerdetailbooked extends GetxController {
     );
     isLoading.value = false;
   }
+
+  void clickReturnRoom(BuildContext context) async {
+  try {
+    final idBookHotel = bookedHotel.value.id!;
+    final response = await dio.put(
+      "http://192.168.88.53:8080/book_hotel/checkout/$idBookHotel",
+    );
+
+    if (response.statusCode == 200) {
+      Dialogcustom.show(context, "Trả phòng thành công");
+      // Sau khi trả phòng, load lại dữ liệu booking
+      await getDetailBooked(); 
+    } else {
+      Dialogcustom.show(context, "Trả phòng thất bại", isSuccess: false);
+    }
+  } catch (e) {
+    Dialogcustom.show(context, "Có lỗi xảy ra", isSuccess: false);
+  }
+}
+
+Future<void> getDetailBooked() async {
+  try {
+    final idBookHotel = bookedHotel.value.id!;
+    final response = await dio.get("http://192.168.88.53:8080/book_hotel/$idBookHotel");
+    if (response.statusCode == 200) {
+      bookedHotel.value = BookHotelModel.fromMap(response.data);
+    }
+  } catch (e) {
+    print("Lỗi getDetailBooked: $e");
+  }
+}
+
+
   void getAllRate(BuildContext context) async {
      isLoadingRating.value = true;
      rates.clear();

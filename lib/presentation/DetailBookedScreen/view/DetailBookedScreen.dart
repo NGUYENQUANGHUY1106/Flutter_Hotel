@@ -438,42 +438,52 @@ class Detailbookedscreen extends GetView<Controllerdetailbooked> {
                             color: Colors.blue),
                       ),
                     ),
-                    Row(
-                      children: [
-                        Visibility(
-                          visible: controller.bookedHotel.value.statusBook ==
-                              Enumstatusbook.WAIT.name,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor:
-                                      const Color.fromARGB(255, 245, 220, 2)),
-                              onPressed: () =>
-                                  controller.clickUpdateBookedHotel(context),
-                              child: const Text("Chỉnh sữa")),
-                        ),
-                        SizedBox(
-                          width: 10.w,
-                        ),
-                        Visibility(
-                          visible: controller.bookedHotel.value.statusBook ==
-                              Enumstatusbook.WAIT.name,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.red),
-                              onPressed: () => controller.clickCancell(context),
-                              child: const Text("Hủy phòng")),
-                        ),
-                         Visibility(
-                          visible: controller.bookedHotel.value.statusBook ==
-                              Enumstatusbook.COMFIRMED.name,
-                          child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  backgroundColor: Colors.black),
-                              onPressed: () => showReviewBottomSheet(context),
-                              child: const Text("Đánh giá")),
-                        )
-                      ],
-                    )
+                      Row(
+  children: [
+    Visibility(
+      visible: controller.bookedHotel.value.statusBook ==
+          Enumstatusbook.WAIT.name,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(
+            backgroundColor: const Color.fromARGB(255, 245, 220, 2)),
+        onPressed: () => controller.clickUpdateBookedHotel(context),
+        child: const Text("Chỉnh sửa"),
+      ),
+    ),
+    SizedBox(width: 10.w),
+    Visibility(
+      visible: controller.bookedHotel.value.statusBook ==
+          Enumstatusbook.WAIT.name,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+        onPressed: () => controller.clickCancell(context),
+        child: const Text("Hủy phòng"),
+      ),
+    ),
+    SizedBox(width: 10.w),
+    Visibility(
+      visible: controller.bookedHotel.value.statusBook ==
+          Enumstatusbook.COMFIRMED.name,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
+        onPressed: () => showReviewBottomSheet(context),
+        child: const Text("Đánh giá"),
+      ),
+    ),
+    SizedBox(width: 10.w),
+    // 🆕 Nút trả phòng mới
+    Visibility(
+      visible: controller.bookedHotel.value.statusBook ==
+          Enumstatusbook.COMFIRMED.name,
+      child: ElevatedButton(
+        style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+        onPressed: () => controller.clickReturnRoom(context),
+        child: const Text("Trả phòng"),
+      ),
+    ),
+  ],
+)
+
                   ],
                 ),
               ),

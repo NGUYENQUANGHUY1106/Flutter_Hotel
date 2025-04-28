@@ -37,7 +37,7 @@ class ControllerDetaiHotel extends GetxController {
 
 Future<void> fetchHotelDetail(int idHotel) async {
   try {
-    final response = await dio.get("http://192.168.88.53:8080/hotel/$idHotel");
+    final response = await dio.get("http://10.60.150.184:8080/hotel/$idHotel");
 
     hotelDetail.value = HotelModel.fromMap(response.data);
 
