@@ -160,6 +160,15 @@ class HotelDetailBooked extends GetView<Controllerhoteldetailbooked> {
                             decoration: const InputDecoration(
                                 label: Text("Số lượng phòng")),
                           ),
+                          SizedBox(height: 8.h),
+                          Text(
+                            "Số phòng trống: ${controller.bookedHotel.value.hotel?.room ?? 0}",
+                            style: TextStyle(
+                              color: Colors.grey[700],
+                              fontSize: 14.sp,
+                              fontStyle: FontStyle.italic,
+                            ),
+                          ),
                           SizedBox(
                             height: 20.h,
                           ),

@@ -98,24 +98,33 @@ class Controllerdetailbooked extends GetxController {
     isLoading.value = false;
   }
 
-  void clickReturnRoom(BuildContext context) async {
+void clickReturnRoom(BuildContext context) async {
   try {
     final idBookHotel = bookedHotel.value.id!;
-    final response = await dio.put(
-      "http://192.168.88.53:8080/book_hotel/checkout/$idBookHotel",
-    );
+final response = await dio.put(
+  "http://192.168.88.53:8080/mvc_10/book_hotel/$idBookHotel/CHECKOUT",
+);
+
+
+    print("STATUS: ${response.statusCode}");
+    print("DATA: ${response.data}");
 
     if (response.statusCode == 200) {
       Dialogcustom.show(context, "Trả phòng thành công");
-      // Sau khi trả phòng, load lại dữ liệu booking
       await getDetailBooked(); 
     } else {
       Dialogcustom.show(context, "Trả phòng thất bại", isSuccess: false);
     }
   } catch (e) {
+    if (e is DioException) {
+      print("LỖI DIO: ${e.response?.statusCode} - ${e.response?.data}");
+    } else {
+      print("LỖI KHÁC: $e");
+    }
     Dialogcustom.show(context, "Có lỗi xảy ra", isSuccess: false);
   }
 }
+
 
 Future<void> getDetailBooked() async {
   try {
