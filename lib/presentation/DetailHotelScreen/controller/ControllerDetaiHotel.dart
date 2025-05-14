@@ -1,3 +1,4 @@
+
 import 'package:book_hotel/Model/BookHotelModel.dart';
 import 'package:book_hotel/Model/HotelModel.dart';
 import 'package:book_hotel/Model/RequestBookHotelModel.dart';
@@ -17,43 +18,34 @@ class ControllerDetaiHotel extends GetxController {
   final HotelModel hotel = Get.arguments as HotelModel;
 
   final dio = Dio();
-  var hotelDetail = Rxn<HotelModel>(); // ✅ Đây sẽ chứa dữ liệu mới fetch
+  var hotelDetail = Rxn<HotelModel>();
   final totalPrice = 0.obs;
   final startDate = TextEditingController();
   final endDate = TextEditingController();
   final format = DateFormat('dd/MM/yyyy');
   late final SharedPreferences prefs;
-
   int count = 0;
 
   @override
   void onInit() {
     super.onInit();
     prefs = GetIt.I<SharedPreferences>();
-    print('Thông tin hotel trước khi fetch: ${hotel.toJson()}');
-    fetchHotelDetail(hotel.id!); // phải là hotel.id
-    // print('Token: ${prefs.getString('token')}');
+    fetchHotelDetail(hotel.id!);
   }
 
-Future<void> fetchHotelDetail(int idHotel) async {
-  try {
-    final response = await dio.get("http://192.168.88.53:8080/hotel/$idHotel");
-
-    hotelDetail.value = HotelModel.fromMap(response.data);
-
-    hotel.room = hotelDetail.value?.room;
-    hotel.price = hotelDetail.value?.price;
-    hotel.username = hotelDetail.value?.username;
-    hotel.address = hotelDetail.value?.address;
-    hotel.img = hotelDetail.value?.img;
-  } catch (e) {
-    print('Lỗi fetchHotelDetail: $e');
+  Future<void> fetchHotelDetail(int idHotel) async {
+    try {
+      final response = await dio.get("http://192.168.88.53:8080/hotel/$idHotel");
+      hotelDetail.value = HotelModel.fromMap(response.data);
+      hotel.room = hotelDetail.value?.room;
+      hotel.price = hotelDetail.value?.price;
+      hotel.username = hotelDetail.value?.username;
+      hotel.address = hotelDetail.value?.address;
+      hotel.img = hotelDetail.value?.img;
+    } catch (e) {
+      print('Loi fetchHotelDetail: $e');
+    }
   }
-}
-
-
-
-
 
   void selectDate(BuildContext context, TextEditingController controller) async {
     DateTime? pickedDate = await showDatePicker(
@@ -69,12 +61,11 @@ Future<void> fetchHotelDetail(int idHotel) async {
 
   void onChangeRoom(int count, BuildContext context) {
     if (startDate.text.isEmpty || endDate.text.isEmpty) {
-      Dialogcustom.show(context, "Điền thông tin ngày", isSuccess: false);
+      Dialogcustom.show(context, "Dien thong tin ngay", isSuccess: false);
       return;
     }
     this.count = count;
     int totalDays = getTotalDays(startDate.text, endDate.text);
-
     int price = hotelDetail.value?.price ?? hotel.price ?? 0;
     totalPrice.value = totalDays * price * count;
   }
@@ -98,13 +89,24 @@ Future<void> fetchHotelDetail(int idHotel) async {
     await repositorydetailhotel.bookHotel(
       data: data,
       success: () {
-        Dialogcustom.show(context, "Đặt phòng thành công");
+        Dialogcustom.show(context, "Dat phong thanh cong");
       },
-      e: () => Dialogcustom.show(context, "Đặt phòng thất bại", isSuccess: false),
+      e: () => Dialogcustom.show(context, "Dat phong that bai", isSuccess: false),
     );
   }
 
   Future<int> getIdUser() async {
     return prefs.getInt(UtilConst.idUser)!;
+  }
+
+  Future<void> toggleFavoriteHotel() async {
+    try {
+      final userId = await getIdUser();
+      final hotelId = hotel.id;
+      await dio.post("http://192.168.88.53:8080/mvc_10/api/favorite/toggle/$userId/$hotelId");
+      print("\u{1F49C} Da yeu thich khach san!");
+    } catch (e) {
+      print(" Loi khi yeu thich khach san: $e");
+    }
   }
 }

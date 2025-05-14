@@ -1,4 +1,5 @@
 import 'package:book_hotel/presentation/UserBookedScreen/view/UserBookedScreen.dart';
+import 'package:book_hotel/presentation/UserFavoriteScreen/View/UserFavoriteScreen.dart';
 import 'package:book_hotel/presentation/UserHomeScreen/view/UserHomeScreen.dart';
 import 'package:book_hotel/presentation/UserProfileScreen/view/UserProfileScreen..dart';
 import 'package:flutter/material.dart';
@@ -12,11 +13,13 @@ class Indexuserscreen extends StatefulWidget {
 class _IndexuserscreenState extends State<Indexuserscreen> {
   late PageController _pageController;
   int _currentIndex = 0;
-  final List<Widget> _screens = [
-    const UserHomeScreen(),
-    const Userbookedscreen(),
-    const UserProfileScreen(),
-  ];
+ final List<Widget> _screens = [
+  const UserHomeScreen(),     
+  const Userbookedscreen(),    
+  const UserFavoriteScreen(),  
+  const UserProfileScreen(),   
+];
+
 
   @override
   void initState() {
@@ -54,6 +57,10 @@ class _IndexuserscreenState extends State<Indexuserscreen> {
             icon: Icon(Icons.hotel),
             label: 'Đặt phòng',
           ),
+           BottomNavigationBarItem(
+          icon: Icon(Icons.favorite),
+          label: 'Yêu thích', 
+        ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: 'Tài khoản',

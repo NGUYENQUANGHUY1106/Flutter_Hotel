@@ -47,10 +47,12 @@ class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
                             },
                           ),
                           IconButton(
-                            onPressed: () {},
+                            onPressed: () async {
+                              await controller.toggleFavoriteHotel();
+                            },
                             icon: Icon(
                               Icons.favorite,
-                              color: Colors.red[500],
+                              color: Colors.redAccent,
                               size: 25.w,
                             ),
                           ),
@@ -95,7 +97,7 @@ class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
                               color: Colors.green,
                             ),
                             child: Text(
-                              "4.8/5.0",
+                              "4.5/5.0",
                               style: TextStyle(
                                   fontSize: 14.sp, color: Colors.white),
                             ),
