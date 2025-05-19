@@ -10,6 +10,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:dio/dio.dart';
 
 class Controllerhomeuser extends GetxController {
   Repositoryindexuser repositoryindexuser = GetIt.I<Repositoryindexuser>();
@@ -23,21 +24,26 @@ class Controllerhomeuser extends GetxController {
   late final SharedPreferences prefs;
   final pathData = 'assets/data/ProvinceData.json';
 
+  var bookingCounts = <String, int>{}.obs;
+  var favoriteCount = 0.obs;
+
   @override
   void onInit() async {
     isLoading.value = true;
-    getHotels();
-    getProvinces();
     prefs = GetIt.I<SharedPreferences>();
-    await getCustomer();
+
+    await getCustomer(); // Gọi trước để có customer
+    await getHotels();
+    getProvinces();
     isLoading.value = false;
     super.onInit();
   }
 
-  void getHotels() async {
-    hotels.clear();
-    hotels.value = await repositoryindexuser.getAllHotel();
-  }
+Future<void> getHotels() async {
+  hotels.clear();
+  hotels.value = await repositoryindexuser.getAllHotel();
+}
+
 
   void getProvinces() async {
     String jsonString = await rootBundle.loadString(pathData);
@@ -56,12 +62,43 @@ class Controllerhomeuser extends GetxController {
     hotels.value =
         await repositoryindexuser.searchHotel(selectProvince, nameHotel.text);
     isLoadingSearch.value = false;
-  } 
-    Future<void> getCustomer() async {
+  }
+
+  Future<void> getCustomer() async {
     int idUser = await getIdUser();
     customer.value = await repositoryindexuser.getCustomer(idUser);
+
+    final userId = customer.value?.user?.id;
+    print("🧾 USER ID từ customer: $userId");
+
+    if (userId != null) {
+      await fetchCounts(userId);
+    } else {
+      print("❌ Không tìm thấy userId trong customer");
+    }
   }
-   Future<int> getIdUser() async {
+
+  Future<int> getIdUser() async {
     return prefs.getInt(UtilConst.idUser)!;
+  }
+
+  Future<void> fetchCounts(int userId) async {
+    try {
+      final dio = Dio();
+
+      final bookingRes = await dio.get(
+        'http://192.168.137.1:8080/mvc_10/book_hotel/booking-counts/$userId',
+      );
+      bookingCounts.value = Map<String, int>.from(bookingRes.data);
+
+      final favRes = await dio.get(
+        'http://192.168.137.1:8080/mvc_10/api/favorite/count/$userId',
+      );
+      favoriteCount.value = favRes.data;
+
+      print(" bookingCounts: ${bookingCounts.value},  favoriteCount: ${favoriteCount.value}");
+    } catch (e) {
+      print(" Lỗi fetchCounts: $e");
+    }
   }
 }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:get/get_state_manager/src/simple/get_view.dart';
 import 'package:book_hotel/config/routes/appRoutes.dart';
 import 'package:book_hotel/presentation/UserHomeScreen/controller/ControllerHomeUser.dart';
 
@@ -18,6 +16,7 @@ class UserProfileScreen extends GetView<Controllerhomeuser> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // Header
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -35,7 +34,6 @@ class UserProfileScreen extends GetView<Controllerhomeuser> {
                   ),
                   SizedBox(width: 10.w),
                   Expanded(
-                    // DÙNG Expanded để hạn chế overflow và cho hiển thị
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -66,15 +64,61 @@ class UserProfileScreen extends GetView<Controllerhomeuser> {
                   ),
                   IconButton(
                     onPressed: () {
-                      // Bước 1: Xoá dữ liệu người dùng nếu có
                       controller.customer.value = null;
-
-                      // Bước 2: Điều hướng về màn hình login và xoá lịch sử điều hướng
                       Get.offAllNamed(AppRoutes.login);
                     },
                     icon: const Icon(Icons.logout),
                   )
                 ],
+              ),
+              SizedBox(height: 30.h),
+
+              // List options
+              Expanded(
+                child: Obx(() {
+                  final userId = controller.customer.value?.user?.id;
+                  if (userId == null) {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+
+                  return ListView(
+                    children: [
+                      ListTile(
+                        leading: const Icon(Icons.favorite, color: Colors.red),
+                        title: Text(
+                          "Khách Sạn Yêu Thích (${controller.favoriteCount.value})",
+                        ),
+                        onTap: () => Get.toNamed('/favorites'),
+                      ),
+                      ListTile(
+                        leading:
+                            const Icon(Icons.schedule, color: Colors.orange),
+                        title: Text(
+                          "Đang Chờ Xác Nhận (${controller.bookingCounts['WAIT'] ?? 0})",
+                        ),
+                        onTap: () =>
+                            Get.toNamed('/bookings', arguments: 'WAIT'),
+                      ),
+                   ListTile(
+  leading: const Icon(Icons.verified_user, color: Colors.teal),
+  title: Text(
+    "Đã Duyệt Phòng (${controller.bookingCounts['COMFIRMED'] ?? 0})", 
+  ),
+  onTap: () => Get.toNamed('/bookings', arguments: 'COMFIRMED'), 
+),
+
+                      ListTile(
+                        leading: const Icon(Icons.meeting_room_outlined,
+                            color: Colors.grey),
+                        title: Text(
+                          "Đã Trả Phòng (${controller.bookingCounts['CHECKOUT'] ?? 0})",
+                        ),
+                        onTap: () =>
+                            Get.toNamed('/bookings', arguments: 'CHECKOUT'),
+                      ),
+                    ],
+                  );
+                }),
               ),
             ],
           ),
