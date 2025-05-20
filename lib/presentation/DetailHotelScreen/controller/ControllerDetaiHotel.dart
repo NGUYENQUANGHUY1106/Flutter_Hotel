@@ -76,24 +76,62 @@ class ControllerDetaiHotel extends GetxController {
     return endParsed.difference(startParsed).inDays;
   }
 
-  void bookHotel(BuildContext context) async {
-    int idUser = await getIdUser();
-    final data = RequestBookHotelModel(
-      idUser: idUser,
-      idHotel: hotel.id!,
-      totalPrice: totalPrice.value,
-      countRoom: count,
-      bookStart: format.parse(startDate.text),
-      bookEnd: format.parse(endDate.text),
-    );
-    await repositorydetailhotel.bookHotel(
-      data: data,
-      success: () {
-        Dialogcustom.show(context, "Dat phong thanh cong");
-      },
-      e: () => Dialogcustom.show(context, "Dat phong that bai", isSuccess: false),
-    );
+void bookHotel(BuildContext context) async {
+  int idUser = await getIdUser();
+
+  // ✅ Kiểm tra định dạng ngày
+  DateTime? start;
+  DateTime? end;
+
+  try {
+    start = format.parse(startDate.text);
+    end = format.parse(endDate.text);
+  } catch (e) {
+    Dialogcustom.show(context, "Vui lòng chọn đúng định dạng ngày", isSuccess: false);
+    return;
   }
+
+  //  Kiểm tra ngày nhận phòng >= hôm nay
+  DateTime today = DateTime.now();
+  DateTime todayDateOnly = DateTime(today.year, today.month, today.day);
+  if (start.isBefore(todayDateOnly)) {
+    Dialogcustom.show(context, "Ngày Nhận Không Chính Xác ", isSuccess: false);
+    return;
+  }
+
+  //  Kiểm tra ngày trả phòng sau ngày nhận phòng
+  if (!end.isAfter(start)) {
+    Dialogcustom.show(context, "Ngày Trả Phòng Không Chính Xác", isSuccess: false);
+    return;
+  }
+
+  //  Kiểm tra số lượng phòng
+  if (count <= 0) {
+    Dialogcustom.show(context, "Số lượng phòng phải lớn hơn 0", isSuccess: false);
+    return;
+  }
+
+  //  Tiếp tục đặt phòng nếu hợp lệ
+  final data = RequestBookHotelModel(
+    idUser: idUser,
+    idHotel: hotel.id!,
+    totalPrice: totalPrice.value,
+    countRoom: count,
+    bookStart: start,
+    bookEnd: end,
+  );
+
+  await repositorydetailhotel.bookHotel(
+    data: data,
+    success: () {
+      Dialogcustom.show(context, "Đặt phòng thành công");
+    },
+    e: () {
+      Dialogcustom.show(context, "Đặt phòng thất bại", isSuccess: false);
+    },
+  );
+}
+
 
   Future<int> getIdUser() async {
     return prefs.getInt(UtilConst.idUser)!;

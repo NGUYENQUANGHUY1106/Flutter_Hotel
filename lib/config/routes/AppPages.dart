@@ -18,6 +18,11 @@ import 'package:book_hotel/presentation/SignUpScreen/view/SignUpScreen.dart';
 import 'package:book_hotel/presentation/UserHomeScreen/view/UserHomeScreen.dart';
 import 'package:book_hotel/presentation/VnPayScreen/view/VnpayScreen.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:book_hotel/presentation/UserFavoriteScreen/View/UserFavoriteScreen.dart';
+import 'package:book_hotel/presentation/UserBookedScreen/view/UserBookedScreen.dart';
+import 'package:book_hotel/presentation/UserBookedScreen/binding/UserBookedBinding.dart';
+
+
 
 class AppPages {
   static final pages = [
@@ -63,5 +68,18 @@ class AppPages {
       name: AppRoutes.home,
       page: () => const UserHomeScreen(),
     ),
+    GetPage(
+  name: AppRoutes.favorites,
+  page: () => const UserFavoriteScreen(),
+),
+
+
+GetPage(
+  name: AppRoutes.bookings,
+  page: () => const UserBookedScreen(),
+  binding: UserBookedBinding(),
+),
+
+
   ];
 }

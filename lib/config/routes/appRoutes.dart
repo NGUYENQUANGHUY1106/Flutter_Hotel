@@ -10,6 +10,9 @@ class AppRoutes {
   static const detailBooked = "/detailBooked";
   static const hotelIndex = "/hotelIndex";
   static const hotelDetailBooked = "/hotelDetailBooked";
+  static const favorites = "/favorites";
+static const bookings = "/bookings";
+
   // static const detailPost = "/detailPost";
   // static const confirmSuggest = "/confirmSuggest";
   // static const banking = "/banking";

@@ -9,6 +9,14 @@ class UserProfileScreen extends GetView<Controllerhomeuser> {
 
   @override
   Widget build(BuildContext context) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      final userId = controller.customer.value?.user?.id;
+      if (userId != null) {
+        controller
+            .fetchCounts(userId); // Tự động cập nhật khi quay lại màn hình
+      }
+    });
+
     return Scaffold(
       body: SafeArea(
         child: Padding(
@@ -56,7 +64,6 @@ class UserProfileScreen extends GetView<Controllerhomeuser> {
                             ),
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
-                            softWrap: false,
                           );
                         }),
                       ],
@@ -82,42 +89,35 @@ class UserProfileScreen extends GetView<Controllerhomeuser> {
                   }
 
                   return ListView(
-                    children: [
-                      ListTile(
-                        leading: const Icon(Icons.favorite, color: Colors.red),
-                        title: Text(
-                          "Khách Sạn Yêu Thích (${controller.favoriteCount.value})",
-                        ),
-                        onTap: () => Get.toNamed('/favorites'),
-                      ),
-                      ListTile(
-                        leading:
-                            const Icon(Icons.schedule, color: Colors.orange),
-                        title: Text(
-                          "Đang Chờ Xác Nhận (${controller.bookingCounts['WAIT'] ?? 0})",
-                        ),
-                        onTap: () =>
-                            Get.toNamed('/bookings', arguments: 'WAIT'),
-                      ),
-                   ListTile(
-  leading: const Icon(Icons.verified_user, color: Colors.teal),
-  title: Text(
-    "Đã Duyệt Phòng (${controller.bookingCounts['COMFIRMED'] ?? 0})", 
-  ),
-  onTap: () => Get.toNamed('/bookings', arguments: 'COMFIRMED'), 
-),
-
-                      ListTile(
-                        leading: const Icon(Icons.meeting_room_outlined,
-                            color: Colors.grey),
-                        title: Text(
-                          "Đã Trả Phòng (${controller.bookingCounts['CHECKOUT'] ?? 0})",
-                        ),
-                        onTap: () =>
-                            Get.toNamed('/bookings', arguments: 'CHECKOUT'),
-                      ),
-                    ],
-                  );
+  children: [
+    ListTile(
+      leading: const Icon(Icons.favorite, color: Colors.red),
+      title: Text("Khách Sạn Yêu Thích (${controller.favoriteCount})"),
+      onTap: () => Get.toNamed('/favorites'),
+    ),
+    ListTile(
+      leading: const Icon(Icons.schedule, color: Colors.orange),
+      title: Text("Đang Chờ Xác Nhận (${controller.bookingCounts['WAIT'] ?? 0})"),
+      onTap: () => Get.toNamed('/bookings', arguments: 'WAIT'),
+    ),
+    ListTile(
+      leading: const Icon(Icons.verified_user, color: Colors.teal),
+      title: Text("Đã Duyệt Phòng (${controller.bookingCounts['COMFIRMED'] ?? 0})"),
+      onTap: () => Get.toNamed('/bookings', arguments: 'COMFIRMED'),
+    ),
+    ListTile(
+      leading: const Icon(Icons.meeting_room_outlined, color: Colors.grey),
+      title: Text("Đã Trả Phòng (${controller.bookingCounts['CHECKOUT'] ?? 0})"),
+      onTap: () => Get.toNamed('/bookings', arguments: 'CHECKOUT'),
+    ),
+    ListTile(
+      leading: const Icon(Icons.cancel_outlined, color: Colors.redAccent),
+      title: Text("Đã Hủy (${controller.bookingCounts['CANCELLED'] ?? 0})"),
+      onTap: () => Get.toNamed('/bookings', arguments: 'CANCELLED'),
+    ),
+  ],
+)
+;
                 }),
               ),
             ],

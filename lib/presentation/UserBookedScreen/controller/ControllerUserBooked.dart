@@ -7,7 +7,7 @@ import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Controlleruserbooked extends GetxController {
+class ControllerUserBooked  extends GetxController {
   Repositoryindexuser repositoryindexuser = GetIt.I<Repositoryindexuser>();
 
   final isLoading = false.obs;

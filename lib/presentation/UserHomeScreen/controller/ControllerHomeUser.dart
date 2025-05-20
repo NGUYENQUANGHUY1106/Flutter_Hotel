@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:book_hotel/Model/CustomerModel.dart';
 import 'package:book_hotel/Model/HotelModel.dart';
 import 'package:book_hotel/Model/ProvinceVn.dart';
@@ -29,21 +28,29 @@ class Controllerhomeuser extends GetxController {
 
   @override
   void onInit() async {
+    super.onInit();
     isLoading.value = true;
     prefs = GetIt.I<SharedPreferences>();
-
-    await getCustomer(); // Gọi trước để có customer
+    await getCustomer(); // Lấy thông tin user và gọi fetchCounts
     await getHotels();
     getProvinces();
     isLoading.value = false;
-    super.onInit();
   }
 
-Future<void> getHotels() async {
-  hotels.clear();
-  hotels.value = await repositoryindexuser.getAllHotel();
-}
+  @override
+  void onReady() {
+    // Khi màn hình đã sẵn sàng thì tự động refresh lại dữ liệu
+    final userId = customer.value?.user?.id;
+    if (userId != null) {
+      fetchCounts(userId);
+    }
+    super.onReady();
+  }
 
+  Future<void> getHotels() async {
+    hotels.clear();
+    hotels.value = await repositoryindexuser.getAllHotel();
+  }
 
   void getProvinces() async {
     String jsonString = await rootBundle.loadString(pathData);
@@ -69,12 +76,8 @@ Future<void> getHotels() async {
     customer.value = await repositoryindexuser.getCustomer(idUser);
 
     final userId = customer.value?.user?.id;
-    print("🧾 USER ID từ customer: $userId");
-
     if (userId != null) {
       await fetchCounts(userId);
-    } else {
-      print("❌ Không tìm thấy userId trong customer");
     }
   }
 
@@ -95,10 +98,8 @@ Future<void> getHotels() async {
         'http://192.168.137.1:8080/mvc_10/api/favorite/count/$userId',
       );
       favoriteCount.value = favRes.data;
-
-      print(" bookingCounts: ${bookingCounts.value},  favoriteCount: ${favoriteCount.value}");
     } catch (e) {
-      print(" Lỗi fetchCounts: $e");
+      print("❌ Lỗi khi fetchCounts: $e");
     }
   }
 }

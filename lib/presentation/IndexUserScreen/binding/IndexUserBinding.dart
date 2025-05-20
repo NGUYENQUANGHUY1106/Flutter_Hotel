@@ -8,6 +8,6 @@ class Indexuserbinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut<Controllerhomeuser>(() => Controllerhomeuser());
-    Get.lazyPut<Controlleruserbooked>(() => Controlleruserbooked());
+    Get.lazyPut<ControllerUserBooked>(() => ControllerUserBooked ());
   }
 }
