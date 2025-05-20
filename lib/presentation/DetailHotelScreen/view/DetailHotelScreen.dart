@@ -163,6 +163,63 @@ class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
                     ),
                   ),
                   SizedBox(height: 20.h),
+// Ô chọn giờ nhận phòng
+                  Obx(() => GestureDetector(
+                        onTap: () async {
+                          final picked = await showTimePicker(
+                            context: context,
+                            initialTime: TimeOfDay(hour: 14, minute: 0),
+                          );
+                          if (picked != null) {
+                            controller.checkInTime.value = picked;
+                          }
+                        },
+                        child: AbsorbPointer(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.access_time),
+                              hintText: "Chọn giờ nhận phòng",
+                              label: Text("Giờ nhận phòng"),
+                            ),
+                            controller: TextEditingController(
+                              text: controller.checkInTime.value != null
+                                  ? controller.checkInTime.value!
+                                      .format(context)
+                                  : "",
+                            ),
+                          ),
+                        ),
+                      )),
+
+                  SizedBox(height: 20.h),
+                  Obx(() => GestureDetector(
+                        onTap: () async {
+                          final picked = await showTimePicker(
+                            context: context,
+                            initialTime: TimeOfDay(hour: 12, minute: 0),
+                          );
+                          if (picked != null) {
+                            controller.checkOutTime.value = picked;
+                          }
+                        },
+                        child: AbsorbPointer(
+                          child: TextField(
+                            decoration: InputDecoration(
+                              prefixIcon: Icon(Icons.access_time),
+                              hintText: "Chọn giờ trả phòng",
+                              label: Text("Giờ trả phòng"),
+                            ),
+                            controller: TextEditingController(
+                              text: controller.checkOutTime.value != null
+                                  ? controller.checkOutTime.value!
+                                      .format(context)
+                                  : "",
+                            ),
+                          ),
+                        ),
+                      )),
+
+                  SizedBox(height: 20.h),
                   TextField(
                     keyboardType: TextInputType.number,
                     onChanged: (value) {

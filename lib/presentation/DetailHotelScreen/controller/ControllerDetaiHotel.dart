@@ -1,5 +1,3 @@
-
-import 'package:book_hotel/Model/BookHotelModel.dart';
 import 'package:book_hotel/Model/HotelModel.dart';
 import 'package:book_hotel/Model/RequestBookHotelModel.dart';
 import 'package:book_hotel/config/routes/appRoutes.dart';
@@ -25,6 +23,9 @@ class ControllerDetaiHotel extends GetxController {
   final format = DateFormat('dd/MM/yyyy');
   late final SharedPreferences prefs;
   int count = 0;
+
+  final checkInTime = Rx<TimeOfDay?>(null);     // ✅ Rx cho giờ nhận phòng
+  final checkOutTime = Rx<TimeOfDay?>(null);    // ✅ Rx cho giờ trả phòng
 
   @override
   void onInit() {
@@ -61,7 +62,7 @@ class ControllerDetaiHotel extends GetxController {
 
   void onChangeRoom(int count, BuildContext context) {
     if (startDate.text.isEmpty || endDate.text.isEmpty) {
-      Dialogcustom.show(context, "Dien thong tin ngay", isSuccess: false);
+      Dialogcustom.show(context, "Điền thông tin ngày", isSuccess: false);
       return;
     }
     this.count = count;
@@ -76,62 +77,65 @@ class ControllerDetaiHotel extends GetxController {
     return endParsed.difference(startParsed).inDays;
   }
 
-void bookHotel(BuildContext context) async {
-  int idUser = await getIdUser();
+  void bookHotel(BuildContext context) async {
+    int idUser = await getIdUser();
 
-  // ✅ Kiểm tra định dạng ngày
-  DateTime? start;
-  DateTime? end;
+    DateTime? start;
+    DateTime? end;
 
-  try {
-    start = format.parse(startDate.text);
-    end = format.parse(endDate.text);
-  } catch (e) {
-    Dialogcustom.show(context, "Vui lòng chọn đúng định dạng ngày", isSuccess: false);
-    return;
+    try {
+      start = format.parse(startDate.text);
+      end = format.parse(endDate.text);
+    } catch (e) {
+      Dialogcustom.show(context, "Vui lòng chọn đúng định dạng ngày", isSuccess: false);
+      return;
+    }
+
+    if (start.isBefore(DateTime.now())) {
+      Dialogcustom.show(context, "Ngày nhận phòng phải từ hôm nay trở đi", isSuccess: false);
+      return;
+    }
+
+    if (!end.isAfter(start)) {
+      Dialogcustom.show(context, "Ngày trả phòng phải sau ngày nhận phòng", isSuccess: false);
+      return;
+    }
+
+    if (count <= 0) {
+      Dialogcustom.show(context, "Số lượng phòng phải lớn hơn 0", isSuccess: false);
+      return;
+    }
+
+    final timeFormat = DateFormat.Hm(); // HH:mm
+    String? checkInFormatted = checkInTime.value != null
+        ? timeFormat.format(DateTime(0, 1, 1, checkInTime.value!.hour, checkInTime.value!.minute))
+        : null;
+
+    String? checkOutFormatted = checkOutTime.value != null
+        ? timeFormat.format(DateTime(0, 1, 1, checkOutTime.value!.hour, checkOutTime.value!.minute))
+        : null;
+
+    final data = RequestBookHotelModel(
+      idUser: idUser,
+      idHotel: hotel.id!,
+      totalPrice: totalPrice.value,
+      countRoom: count,
+      bookStart: start,
+      bookEnd: end,
+      checkinTime: checkInFormatted,
+      checkoutTime: checkOutFormatted,
+    );
+
+    await repositorydetailhotel.bookHotel(
+      data: data,
+      success: () {
+        Dialogcustom.show(context, "Đặt phòng thành công");
+      },
+      e: () {
+        Dialogcustom.show(context, "Đặt phòng thất bại", isSuccess: false);
+      },
+    );
   }
-
-  //  Kiểm tra ngày nhận phòng >= hôm nay
-  DateTime today = DateTime.now();
-  DateTime todayDateOnly = DateTime(today.year, today.month, today.day);
-  if (start.isBefore(todayDateOnly)) {
-    Dialogcustom.show(context, "Ngày Nhận Không Chính Xác ", isSuccess: false);
-    return;
-  }
-
-  //  Kiểm tra ngày trả phòng sau ngày nhận phòng
-  if (!end.isAfter(start)) {
-    Dialogcustom.show(context, "Ngày Trả Phòng Không Chính Xác", isSuccess: false);
-    return;
-  }
-
-  //  Kiểm tra số lượng phòng
-  if (count <= 0) {
-    Dialogcustom.show(context, "Số lượng phòng phải lớn hơn 0", isSuccess: false);
-    return;
-  }
-
-  //  Tiếp tục đặt phòng nếu hợp lệ
-  final data = RequestBookHotelModel(
-    idUser: idUser,
-    idHotel: hotel.id!,
-    totalPrice: totalPrice.value,
-    countRoom: count,
-    bookStart: start,
-    bookEnd: end,
-  );
-
-  await repositorydetailhotel.bookHotel(
-    data: data,
-    success: () {
-      Dialogcustom.show(context, "Đặt phòng thành công");
-    },
-    e: () {
-      Dialogcustom.show(context, "Đặt phòng thất bại", isSuccess: false);
-    },
-  );
-}
-
 
   Future<int> getIdUser() async {
     return prefs.getInt(UtilConst.idUser)!;
@@ -142,9 +146,9 @@ void bookHotel(BuildContext context) async {
       final userId = await getIdUser();
       final hotelId = hotel.id;
       await dio.post("http://192.168.88.53:8080/mvc_10/api/favorite/toggle/$userId/$hotelId");
-      print("\u{1F49C} Da yeu thich khach san!");
+      print("💗 Đã yêu thích khách sạn!");
     } catch (e) {
-      print(" Loi khi yeu thich khach san: $e");
+      print("❌ Lỗi khi yêu thích khách sạn: $e");
     }
   }
 }

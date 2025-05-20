@@ -13,6 +13,8 @@ class BookHotelModel {
   final String? createdBy;
   final String? modifiedBy;
   final HotelModel? hotel;
+  final String? checkinTime;    // ✅ thêm
+  final String? checkoutTime;   // ✅ thêm
 
   BookHotelModel({
     this.id,
@@ -26,6 +28,8 @@ class BookHotelModel {
     this.createdBy,
     this.modifiedBy,
     this.hotel,
+    this.checkinTime,     // ✅ thêm
+    this.checkoutTime,    // ✅ thêm
   });
 
   factory BookHotelModel.fromMap(Map<String, dynamic> map) {
@@ -51,6 +55,8 @@ class BookHotelModel {
       hotel: map['hotel'] != null
           ? HotelModel.fromMap(map['hotel'] as Map<String, dynamic>)
           : null,
+      checkinTime: map['checkinTime'] as String?,     // ✅ thêm
+      checkoutTime: map['checkoutTime'] as String?,   // ✅ thêm
     );
   }
 
@@ -67,6 +73,8 @@ class BookHotelModel {
       if (createdBy != null) 'createdBy': createdBy,
       if (modifiedBy != null) 'modifiedBy': modifiedBy,
       if (hotel != null) 'hotel': hotel!.toMap(),
+      if (checkinTime != null) 'checkinTime': checkinTime,         // ✅ thêm
+      if (checkoutTime != null) 'checkoutTime': checkoutTime,      // ✅ thêm
     };
   }
 
@@ -77,6 +85,6 @@ class BookHotelModel {
 
   @override
   String toString() {
-    return 'BookHotelModel(id: $id, bookStart: $bookStart, bookEnd: $bookEnd, statusBook: $statusBook, totalPrice: $totalPrice, countRoom: $countRoom, createdAt: $createdAt, updatedAt: $updatedAt, createdBy: $createdBy, modifiedBy: $modifiedBy, hotel: $hotel)';
+    return 'BookHotelModel(id: $id, bookStart: $bookStart, bookEnd: $bookEnd, statusBook: $statusBook, totalPrice: $totalPrice, countRoom: $countRoom, createdAt: $createdAt, updatedAt: $updatedAt, createdBy: $createdBy, modifiedBy: $modifiedBy, hotel: $hotel, checkinTime: $checkinTime, checkoutTime: $checkoutTime)';
   }
 }

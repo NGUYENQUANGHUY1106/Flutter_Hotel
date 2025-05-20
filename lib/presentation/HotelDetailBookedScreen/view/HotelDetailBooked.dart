@@ -228,6 +228,42 @@ class HotelDetailBooked extends GetView<Controllerhoteldetailbooked> {
                                     )
                                   ],
                                 ),
+                                SizedBox(height: 10.h),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Giờ nhận phòng : ",
+                                      style: TextStyle(
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    Text(
+                                      controller
+                                              .bookedHotel.value.checkinTime ??
+                                          "Chưa có",
+                                      style: TextStyle(
+                                          fontSize: 14.sp, color: Colors.blue),
+                                    )
+                                  ],
+                                ),
+                                SizedBox(height: 10.h),
+                                Row(
+                                  children: [
+                                    Text(
+                                      "Giờ trả phòng : ",
+                                      style: TextStyle(
+                                          fontSize: 14.sp,
+                                          fontWeight: FontWeight.w600),
+                                    ),
+                                    Text(
+                                      controller
+                                              .bookedHotel.value.checkoutTime ??
+                                          "Chưa có",
+                                      style: TextStyle(
+                                          fontSize: 14.sp, color: Colors.blue),
+                                    )
+                                  ],
+                                ),
                               ],
                             ),
                           ),

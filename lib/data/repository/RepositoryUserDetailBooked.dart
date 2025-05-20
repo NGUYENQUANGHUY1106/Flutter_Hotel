@@ -28,20 +28,33 @@ class Repositoryuserdetailbooked {
     }
   }
 
-  Future<void> updateBookedHotel(
-      {required Function(BookHotelModel data) success,
-      required RequestBookHotelModel data,
-      required Function() e}) async {
-    print(data.toJson());
-    Response response =
-        await dio.put(Endpointcustomer.updateStatusBooked, data: data.toJson());
+  Future<void> updateBookedHotel({
+  required Function(BookHotelModel data) success,
+  required RequestBookHotelModel data,
+  required Function() e,
+}) async {
+  print("===> Dữ liệu gửi đi:");
+  print(data.toJson());
+
+  try {
+    Response response = await dio.put(
+      "http://192.168.88.53:8080/mvc_10/book_hotel",
+      data: data.toJson(),
+    );
+
     if (response.statusCode == 200) {
-      final data = BookHotelModel.fromMap(response.data);
-      success(data);
+      final newData = BookHotelModel.fromMap(response.data);
+      success(newData);
     } else {
+      print(" Lỗi server: ${response.statusCode}");
       e();
     }
+  } catch (error) {
+    print(" Lỗi kết nối: $error");
+    e();
   }
+}
+
   Future<void> addRate(
        {required Function() success,
        required Requestaddrate data,
