@@ -7,6 +7,8 @@ import 'package:book_hotel/presentation/UserBookedScreen/controller/ControllerUs
 import 'package:book_hotel/presentation/UserHomeScreen/view/UserHomeScreen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:book_hotel/core/util/format_utils.dart';
+
 import 'package:get/get.dart';
 
 class UserBookedScreen extends GetView<ControllerUserBooked> {
@@ -114,7 +116,7 @@ class BoxBookedHotel extends StatelessWidget {
                           style: TextStyle(fontSize: 13.sp, color: Colors.white),
                         ),
                       ),
-                      Text("${bookHotel.totalPrice}k",
+                      Text("${formatCurrency(bookHotel.totalPrice)} / Ngày ",
                           style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w500)),
                     ],
                   )

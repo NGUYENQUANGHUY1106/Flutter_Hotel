@@ -24,8 +24,11 @@ class ControllerDetaiHotel extends GetxController {
   late final SharedPreferences prefs;
   int count = 0;
 
-  final checkInTime = Rx<TimeOfDay?>(null);     // ✅ Rx cho giờ nhận phòng
-  final checkOutTime = Rx<TimeOfDay?>(null);    // ✅ Rx cho giờ trả phòng
+  final checkInTime = Rx<TimeOfDay?>(null);     
+  final checkOutTime = Rx<TimeOfDay?>(null);    
+  final selectedBedType = 'Giường đơn'.obs;
+final selectedRoomType = 'Standard'.obs;
+
 
   @override
   void onInit() {
@@ -146,9 +149,9 @@ class ControllerDetaiHotel extends GetxController {
       final userId = await getIdUser();
       final hotelId = hotel.id;
       await dio.post("http://192.168.88.53:8080/mvc_10/api/favorite/toggle/$userId/$hotelId");
-      print("💗 Đã yêu thích khách sạn!");
+      print(" Đã yêu thích khách sạn!");
     } catch (e) {
-      print("❌ Lỗi khi yêu thích khách sạn: $e");
+      print(" Lỗi khi yêu thích khách sạn: $e");
     }
   }
 }

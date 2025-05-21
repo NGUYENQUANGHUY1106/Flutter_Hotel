@@ -2,6 +2,7 @@ import 'package:book_hotel/Model/FavoriteHotelModel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:book_hotel/presentation/UserFavoriteScreen/controller/FavoriteHotelController.dart';
+import 'package:book_hotel/core/util/format_utils.dart';
 
 class UserFavoriteScreen extends StatelessWidget {
   const UserFavoriteScreen({super.key});
@@ -26,7 +27,7 @@ class UserFavoriteScreen extends StatelessWidget {
               child: ListTile(
                 leading: Image.network(hotel.hotelImage, width: 60, fit: BoxFit.cover),
                 title: Text(hotel.hotelName),
-                subtitle: Text('${hotel.hotelPrice} VND - ${hotel.hotelRating}/5⭐'),
+                subtitle: Text('${formatCurrency(hotel.hotelPrice)}  - ${hotel.hotelRating}/5⭐'),
                 trailing: Text('Phòng: ${hotel.availableRooms}'),
               ),
             );

@@ -51,24 +51,23 @@ class UserHomeScreen extends GetView<Controllerhomeuser> {
                       child: SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Wrap(
-                          spacing: 10,
-                          runSpacing: 10,
-                          children: controller.hotels.map((hotel) {
-  return GestureDetector(
-   onTap: () {
-  print("Hotel ID: ${hotel.id}");  // <-- hotel.id phải là ID của bảng hotel (ví dụ 10, 11, 12).
-  Get.to(() => HotelDetailScreen(), arguments: hotel);
-},
-
-    child: SizedBox(
-      width: 200,
-      height: 270,
-      child: BoxItemHotel(hotel: hotel),
-    ),
-  );
-}).toList()
-
-                        ),
+                            spacing: 10,
+                            runSpacing: 10,
+                            children: controller.hotels.map((hotel) {
+                              return GestureDetector(
+                                onTap: () {
+                                  print(
+                                      "Hotel ID: ${hotel.id}"); // <-- hotel.id phải là ID của bảng hotel (ví dụ 10, 11, 12).
+                                  Get.to(() => HotelDetailScreen(),
+                                      arguments: hotel);
+                                },
+                                child: SizedBox(
+                                  width: 200,
+                                  height: 270,
+                                  child: BoxItemHotel(hotel: hotel),
+                                ),
+                              );
+                            }).toList()),
                       ),
                     ),
                   ),

@@ -6,6 +6,8 @@ import 'package:book_hotel/presentation/UserHomeScreen/view/UserHomeScreen.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:book_hotel/core/util/format_utils.dart';
+
 
 class HotelDetailBooked extends GetView<Controllerhoteldetailbooked> {
   const HotelDetailBooked({super.key});
@@ -100,7 +102,7 @@ class HotelDetailBooked extends GetView<Controllerhoteldetailbooked> {
                                   color: Colors.red,
                                 ),
                                 child: Text(
-                                  "${controller.bookedHotel.value.hotel!.price!}k/đêm",
+                                  "${formatCurrency(controller.bookedHotel.value.hotel!.price!)}/ Ngày",
                                   style: TextStyle(
                                       fontSize: 14.sp, color: Colors.white),
                                 ),
@@ -339,7 +341,7 @@ class HotelDetailBooked extends GetView<Controllerhoteldetailbooked> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "${controller.bookedHotel.value.totalPrice}k",
+                      "${formatCurrency(controller.bookedHotel.value.totalPrice)}",
                       style: TextStyle(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w900,

@@ -4,6 +4,7 @@ import 'package:book_hotel/presentation/UserHomeScreen/view/UserHomeScreen.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:book_hotel/core/util/format_utils.dart';
 
 class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
   const HotelDetailScreen({super.key}); // ✅ Đúng 1 constructor duy nhất
@@ -112,7 +113,7 @@ class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
                           color: Colors.red,
                         ),
                         child: Text(
-                          "${controller.hotel.price ?? 0} VNĐ/đêm",
+                          "${formatCurrency(controller.hotel.price ?? 0)} / Ngày ",
                           style:
                               TextStyle(fontSize: 14.sp, color: Colors.white),
                         ),
@@ -234,6 +235,55 @@ class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
                     ),
                   ),
                   SizedBox(height: 20.h),
+                  Obx(() => DropdownButtonFormField<String>(
+                        decoration: const InputDecoration(
+                          labelText: 'Chọn loại giường',
+                          prefixIcon: Icon(Icons.bed),
+                          border: OutlineInputBorder(),
+                        ),
+                        value: controller.selectedBedType.value,
+                        items: ['Giường đơn', 'Giường đôi']
+                            .map((type) => DropdownMenuItem<String>(
+                                  value: type,
+                                  child: Text(
+                                    type,
+                                    
+                                     style: TextStyle(fontSize: 13.sp),
+                                    ),
+                                ))
+                            .toList(),
+                        onChanged: (value) {
+                          if (value != null)
+                            controller.selectedBedType.value = value;
+                        },
+                      )),
+                  SizedBox(height: 20.h),
+
+                  Obx(() => DropdownButtonFormField<String>(
+                        decoration: const InputDecoration(
+                          labelText: 'Chọn hạng phòng',
+                          prefixIcon: Icon(Icons.star),
+                          border: OutlineInputBorder(),
+                        ),
+                        value: controller.selectedRoomType.value,
+                        items: ['Standard', 'Deluxe', 'VIP']
+                            .map((type) => DropdownMenuItem<String>(
+                                  value: type,
+                                  child: Text(
+                                    type,
+                                    style: TextStyle(
+                                        fontSize: 13.sp), 
+                                  ),
+                                ))
+                            .toList(),
+                        onChanged: (value) {
+                          if (value != null)
+                            controller.selectedRoomType.value = value;
+                        },
+                      )),
+                  SizedBox(height: 20.h),
+
+                  SizedBox(height: 20.h),
                   Obx(() => Row(
                         children: [
                           Icon(Icons.meeting_room, color: Colors.green),
@@ -264,7 +314,7 @@ class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Obx(() => Text(
-                  "${controller.totalPrice} VND",
+                  "${formatCurrency(controller.totalPrice.value)} ",
                   style: TextStyle(
                     fontSize: 16.sp,
                     fontWeight: FontWeight.w900,

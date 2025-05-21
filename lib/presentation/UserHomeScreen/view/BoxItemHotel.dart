@@ -10,6 +10,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:book_hotel/core/util/format_utils.dart';
 
 
 class BoxItemHotel extends StatelessWidget {
@@ -18,7 +19,6 @@ class BoxItemHotel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-     final formatCurrency = NumberFormat("#,###", "vi_VN");
     return GestureDetector(
 
       onTap: () => Get.toNamed(AppRoutes.detailHotelScreen, arguments: hotel),
@@ -102,8 +102,8 @@ class BoxItemHotel extends StatelessWidget {
 
                   const SizedBox(height: 4),
 
-                  Text(
-                    "${(hotel.price)} VNĐ / Ngày Đêm",
+                  Text( 
+                    "${formatCurrency(hotel.price)}  / Ngày ",
                     style: const TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.w500,

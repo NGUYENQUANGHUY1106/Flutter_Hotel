@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:book_hotel/core/util/format_utils.dart';
+
 
 class Detailbookedscreen extends GetView<Controllerdetailbooked> {
   const Detailbookedscreen({super.key});
@@ -218,7 +220,7 @@ class Detailbookedscreen extends GetView<Controllerdetailbooked> {
                                   color: Colors.red,
                                 ),
                                 child: Text(
-                                  "${controller.bookedHotel.value.hotel!.price!}k/đêm",
+                                  "${formatCurrency(controller.bookedHotel.value.hotel!.price!)} / Ngày ",
                                   style: TextStyle(
                                       fontSize: 14.sp, color: Colors.white),
                                 ),
@@ -470,7 +472,7 @@ class Detailbookedscreen extends GetView<Controllerdetailbooked> {
                   children: [
                     Obx(
                       () => Text(
-                        "${controller.totalMoney}k",
+                        "${formatCurrency(controller.totalMoney.value)}",
                         style: TextStyle(
                             fontSize: 16.sp,
                             fontWeight: FontWeight.w900,

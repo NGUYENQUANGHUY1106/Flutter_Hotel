@@ -7,6 +7,7 @@ import 'package:book_hotel/presentation/UserHomeScreen/view/UserHomeScreen.dart'
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'package:book_hotel/core/util/format_utils.dart';
 
 class Hotelindexscreen extends GetView<Controllerhotelindex> {
   const Hotelindexscreen({super.key});
@@ -21,7 +22,7 @@ class Hotelindexscreen extends GetView<Controllerhotelindex> {
                   actions: [
                     Obx(
                       () => Text(
-                        "Doanh thu : ${controller.money.value}k",
+                        "Doanh thu : ${formatCurrency(controller.money.value)}",
                         style: TextStyle(color: Colors.white, fontSize: 14.sp),
                       ),
                     ),
@@ -122,7 +123,7 @@ class HotelBoxBooked extends StatelessWidget {
                               TextStyle(fontSize: 13.sp, color: Colors.white),
                         ),
                       ),
-                      Text("${bookHotelModel.totalPrice}k",
+                      Text("${formatCurrency(bookHotelModel.totalPrice)}",
                           style: TextStyle(
                               fontSize: 13.sp, fontWeight: FontWeight.w500))
                     ],
