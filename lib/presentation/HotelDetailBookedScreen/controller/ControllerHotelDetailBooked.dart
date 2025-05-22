@@ -7,32 +7,48 @@ import 'package:get/get.dart';
 import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
 
-class Controllerhoteldetailbooked extends GetxController {
-  Repositoryuserdetailbooked repositoryuserdetailbooked =
+class ControllerHotelDetailBooked extends GetxController {
+  final Repositoryuserdetailbooked repositoryUserDetailBooked =
       GetIt.I<Repositoryuserdetailbooked>();
+
   final bookedHotel = (Get.arguments as BookHotelModel).obs;
+
   final format = DateFormat('dd/MM/yyyy');
   final isLoading = false.obs;
+
   final startDate = TextEditingController();
   final endDate = TextEditingController();
   final count = TextEditingController();
 
+  final selectedBedType = ''.obs;
+  final selectedRoomType = ''.obs;
+
   @override
   void onInit() {
+    super.onInit();
+
+    // Thiết lập dữ liệu ngày đặt phòng
     startDate.text = format.format(bookedHotel.value.bookStart!);
     endDate.text = format.format(bookedHotel.value.bookEnd!);
+
+    // Thiết lập số lượng phòng
     count.text = bookedHotel.value.countRoom.toString();
-    super.onInit();
+
+    // Thiết lập loại giường và hạng phòng
+    selectedBedType.value = bookedHotel.value.bedType ?? 'Giường đơn';
+    selectedRoomType.value = bookedHotel.value.roomType ?? 'Standard';
   }
 
   void clickConfirm(BuildContext context) async {
     isLoading.value = true;
-    await repositoryuserdetailbooked.updateStatusBooked(
+
+    await repositoryUserDetailBooked.updateStatusBooked(
       bookedHotel.value.id!,
       Enumstatusbook.COMFIRMED.name,
       success: (data) => bookedHotel.value = data,
-      e: () => Dialogcustom.show(context, "loi huy"),
+      e: () => Dialogcustom.show(context, "Lỗi xác nhận", isSuccess: false),
     );
+
     isLoading.value = false;
   }
 }

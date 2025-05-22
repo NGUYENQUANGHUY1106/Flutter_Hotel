@@ -13,8 +13,10 @@ class BookHotelModel {
   final String? createdBy;
   final String? modifiedBy;
   final HotelModel? hotel;
-  final String? checkinTime;    // ✅ thêm
-  final String? checkoutTime;   // ✅ thêm
+  final String? checkinTime;
+  final String? checkoutTime;
+  final String? bedType;
+  final String? roomType;
 
   BookHotelModel({
     this.id,
@@ -28,8 +30,10 @@ class BookHotelModel {
     this.createdBy,
     this.modifiedBy,
     this.hotel,
-    this.checkinTime,     // ✅ thêm
-    this.checkoutTime,    // ✅ thêm
+    this.checkinTime,
+    this.checkoutTime,
+    this.bedType,
+    this.roomType,
   });
 
   factory BookHotelModel.fromMap(Map<String, dynamic> map) {
@@ -55,8 +59,10 @@ class BookHotelModel {
       hotel: map['hotel'] != null
           ? HotelModel.fromMap(map['hotel'] as Map<String, dynamic>)
           : null,
-      checkinTime: map['checkinTime'] as String?,     // ✅ thêm
-      checkoutTime: map['checkoutTime'] as String?,   // ✅ thêm
+      checkinTime: map['checkinTime'] as String?,
+      checkoutTime: map['checkoutTime'] as String?,
+      bedType: map['bedType'] as String?,
+      roomType: map['roomType'] as String?,
     );
   }
 
@@ -73,8 +79,10 @@ class BookHotelModel {
       if (createdBy != null) 'createdBy': createdBy,
       if (modifiedBy != null) 'modifiedBy': modifiedBy,
       if (hotel != null) 'hotel': hotel!.toMap(),
-      if (checkinTime != null) 'checkinTime': checkinTime,         // ✅ thêm
-      if (checkoutTime != null) 'checkoutTime': checkoutTime,      // ✅ thêm
+      if (checkinTime != null) 'checkinTime': checkinTime,
+      if (checkoutTime != null) 'checkoutTime': checkoutTime,
+      if (bedType != null) 'bedType': bedType,
+      if (roomType != null) 'roomType': roomType,
     };
   }
 
@@ -85,6 +93,6 @@ class BookHotelModel {
 
   @override
   String toString() {
-    return 'BookHotelModel(id: $id, bookStart: $bookStart, bookEnd: $bookEnd, statusBook: $statusBook, totalPrice: $totalPrice, countRoom: $countRoom, createdAt: $createdAt, updatedAt: $updatedAt, createdBy: $createdBy, modifiedBy: $modifiedBy, hotel: $hotel, checkinTime: $checkinTime, checkoutTime: $checkoutTime)';
+    return 'BookHotelModel(id: $id, bookStart: $bookStart, bookEnd: $bookEnd, statusBook: $statusBook, totalPrice: $totalPrice, countRoom: $countRoom, createdAt: $createdAt, updatedAt: $updatedAt, createdBy: $createdBy, modifiedBy: $modifiedBy, hotel: $hotel, checkinTime: $checkinTime, checkoutTime: $checkoutTime, bedType: $bedType, roomType: $roomType)';
   }
 }

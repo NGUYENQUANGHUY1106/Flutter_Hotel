@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:book_hotel/core/util/format_utils.dart';
+import 'package:intl/intl.dart';
 
 class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
   const HotelDetailScreen({super.key}); // ✅ Đúng 1 constructor duy nhất
@@ -247,9 +248,10 @@ class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
                                   value: type,
                                   child: Text(
                                     type,
-                                    
-                                     style: TextStyle(fontSize: 13.sp),
+                                    style: TextStyle(
+                                      fontSize: 13.sp,
                                     ),
+                                  ),
                                 ))
                             .toList(),
                         onChanged: (value) {
@@ -259,6 +261,7 @@ class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
                       )),
                   SizedBox(height: 20.h),
 
+                  // Dropdown chọn hạng phòng
                   Obx(() => DropdownButtonFormField<String>(
                         decoration: const InputDecoration(
                           labelText: 'Chọn hạng phòng',
@@ -271,19 +274,22 @@ class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
                                   value: type,
                                   child: Text(
                                     type,
-                                    style: TextStyle(
-                                        fontSize: 13.sp), 
+                                    style: TextStyle(fontSize: 13.sp),
                                   ),
                                 ))
                             .toList(),
                         onChanged: (value) {
-                          if (value != null)
+                          if (value != null) {
                             controller.selectedRoomType.value = value;
+                            controller
+                                .updateTotalPrice(); // ✅ Tính lại tổng tiền
+                          }
                         },
                       )),
-                  SizedBox(height: 20.h),
 
                   SizedBox(height: 20.h),
+
+// Hiển thị số phòng trống
                   Obx(() => Row(
                         children: [
                           Icon(Icons.meeting_room, color: Colors.green),
@@ -296,7 +302,13 @@ class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
                             ),
                           ),
                         ],
-                      ))
+                      )),
+
+                  SizedBox(height: 12.h),
+
+// ✅ Hiển thị giá tiền tổng
+
+                  SizedBox(height: 20.h),
                 ],
               ),
             ),
@@ -314,10 +326,10 @@ class HotelDetailScreen extends GetView<ControllerDetaiHotel> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Obx(() => Text(
-                  "${formatCurrency(controller.totalPrice.value)} ",
+                  '${NumberFormat.currency(locale: 'vi_VN', symbol: '', decimalDigits: 0).format(controller.totalPrice.value)} VNĐ',
                   style: TextStyle(
+                    fontWeight: FontWeight.bold,
                     fontSize: 16.sp,
-                    fontWeight: FontWeight.w900,
                     color: Colors.blue,
                   ),
                 )),

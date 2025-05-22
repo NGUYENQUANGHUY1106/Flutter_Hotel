@@ -24,11 +24,17 @@ class ControllerUserBooked  extends GetxController {
     super.onInit();
   }
 
-  Future<void> getAllBookedHotel() async {
-    int idUser = await getIdUser();
-    bookedHotels.clear();
-    bookedHotels.value = await repositoryindexuser.getAllBookedhotel(idUser);
-  }
+Future<void> getAllBookedHotel() async {
+  int idUser = await getIdUser();
+  bookedHotels.clear();
+
+  final fetchedList = await repositoryindexuser.getAllBookedhotel(idUser);
+
+  fetchedList.sort((a, b) => b.createdAt!.compareTo(a.createdAt!));
+
+  bookedHotels.value = fetchedList;
+}
+
 
   Future<int> getIdUser() async {
     return prefs.getInt(UtilConst.idUser)!;

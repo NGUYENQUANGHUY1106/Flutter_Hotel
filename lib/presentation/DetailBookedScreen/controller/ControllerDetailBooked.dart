@@ -27,37 +27,64 @@ class Controllerdetailbooked extends GetxController {
 
   final startDate = TextEditingController();
   final endDate = TextEditingController();
-  final checkInTime = TextEditingController();
-  final checkOutTime = TextEditingController();
   final checkInTimeController = TextEditingController();
-final checkOutTimeController = TextEditingController();
-
+  final checkOutTimeController = TextEditingController();
 
   int c = 0;
   double rateStar = 0;
 
   final totalMoney = 0.obs;
+  final selectedBedType = ''.obs;
+  final selectedRoomType = ''.obs;
 
   @override
   void onInit() {
-    startDate.text = format.format(bookedHotel.value.bookStart!);
-    endDate.text = format.format(bookedHotel.value.bookEnd!);
-    count.text = bookedHotel.value.countRoom!.toString();
-    totalMoney.value = bookedHotel.value.totalPrice!;
-    checkInTimeController.text = bookedHotel.value.checkinTime ?? "";
-checkOutTimeController.text = bookedHotel.value.checkoutTime ?? "";
-
-
-    // Gán giờ nếu có
-    if (bookedHotel.value.checkinTime != null) {
-      checkInTime.text = bookedHotel.value.checkinTime!;
-    }
-    if (bookedHotel.value.checkoutTime != null) {
-      checkOutTime.text = bookedHotel.value.checkoutTime!;
-    }
-
     super.onInit();
+    fetchData();
   }
+
+  Future<void> fetchData() async {
+    isLoading.value = true;
+    try {
+      await getDetailBooked();
+      selectedBedType.value = bookedHotel.value.bedType ?? '';
+      selectedRoomType.value = bookedHotel.value.roomType ?? '';
+      startDate.text = format.format(bookedHotel.value.bookStart!);
+      endDate.text = format.format(bookedHotel.value.bookEnd!);
+      count.text = bookedHotel.value.countRoom!.toString();
+      totalMoney.value = bookedHotel.value.totalPrice!;
+      checkInTimeController.text = bookedHotel.value.checkinTime ?? '';
+      checkOutTimeController.text = bookedHotel.value.checkoutTime ?? '';
+    } catch (e) {
+      print("Lỗi fetchData: $e");
+    } finally {
+      isLoading.value = false;
+    }
+  }
+
+  Future<void> getDetailBooked() async {
+  try {
+    final idBookHotel = bookedHotel.value.id!;
+final url = "http://192.168.88.53:8080/mvc_10/book_hotel/detail/$idBookHotel";
+    print("🔎 Gọi API: $url");
+
+    final response = await dio.get(url);
+    if (response.statusCode == 200) {
+  bookedHotel.value = BookHotelModel.fromMap(response.data);
+
+  selectedBedType.value = bookedHotel.value.bedType ?? 'Giường đơn';
+  selectedRoomType.value = bookedHotel.value.roomType ?? 'Standard';
+  checkInTimeController.text = bookedHotel.value.checkinTime ?? '';
+  checkOutTimeController.text = bookedHotel.value.checkoutTime ?? '';
+  count.text = bookedHotel.value.countRoom.toString();
+}
+
+  } catch (e) {
+    print(" Lỗi getDetailBooked: $e");
+    Dialogcustom.show(Get.context!, "Không tìm thấy đặt phòng!", isSuccess: false);
+  }
+}
+
 
   void onChangeRoom(int count, BuildContext context) {
     if (startDate.text == "" || endDate.text == "") {
@@ -82,13 +109,10 @@ checkOutTimeController.text = bookedHotel.value.checkoutTime ?? "";
       firstDate: DateTime(2000),
       lastDate: DateTime(2100),
     );
-
     if (pickedDate != null) {
       value.text = DateFormat('dd/MM/yyyy').format(pickedDate);
     }
   }
-
-
 
   void clickCancell(BuildContext context) async {
     isLoading.value = true;
@@ -101,26 +125,27 @@ checkOutTimeController.text = bookedHotel.value.checkoutTime ?? "";
     isLoading.value = false;
   }
 
- void clickUpdateBookedHotel(BuildContext context) async {
-  isLoading.value = true;
-  final dataUpdate = RequestBookHotelModel(
-    id: bookedHotel.value.id,
-    totalPrice: totalMoney.value,
-    countRoom: int.tryParse(count.text) ?? 1,
-    bookStart: format.parse(startDate.text),
-    bookEnd: format.parse(endDate.text),
-    checkinTime: checkInTimeController.text,
-    checkoutTime: checkOutTimeController.text,
-  );
+  void clickUpdateBookedHotel(BuildContext context) async {
+    isLoading.value = true;
+    final dataUpdate = RequestBookHotelModel(
+      id: bookedHotel.value.id,
+      totalPrice: totalMoney.value,
+      countRoom: int.tryParse(count.text) ?? 1,
+      bookStart: format.parse(startDate.text),
+      bookEnd: format.parse(endDate.text),
+      checkinTime: checkInTimeController.text,
+      checkoutTime: checkOutTimeController.text,
+      bedType: selectedBedType.value,
+      roomType: selectedRoomType.value,
+    );
 
-  await repositoryuserdetailbooked.updateBookedHotel(
-    success: (data) => bookedHotel.value = data,
-    data: dataUpdate,
-    e: () => Dialogcustom.show(context, "Cập nhật lỗi", isSuccess: false),
-  );
-  isLoading.value = false;
-}
-
+    await repositoryuserdetailbooked.updateBookedHotel(
+      success: (data) => bookedHotel.value = data,
+      data: dataUpdate,
+      e: () => Dialogcustom.show(context, "Cập nhật lỗi", isSuccess: false),
+    );
+    isLoading.value = false;
+  }
 
   void clickReturnRoom(BuildContext context) async {
     try {
@@ -128,7 +153,6 @@ checkOutTimeController.text = bookedHotel.value.checkoutTime ?? "";
       final response = await dio.put(
         "http://192.168.88.53:8080/mvc_10/book_hotel/$idBookHotel/CHECKOUT",
       );
-
       if (response.statusCode == 200) {
         Dialogcustom.show(context, "Trả phòng thành công");
         await getDetailBooked();
@@ -136,30 +160,8 @@ checkOutTimeController.text = bookedHotel.value.checkoutTime ?? "";
         Dialogcustom.show(context, "Trả phòng thất bại", isSuccess: false);
       }
     } catch (e) {
-      if (e is DioException) {
-        print("LỖI DIO: ${e.response?.statusCode} - ${e.response?.data}");
-      } else {
-        print("LỖI KHÁC: $e");
-      }
+      print("Lỗi clickReturnRoom: $e");
       Dialogcustom.show(context, "Có lỗi xảy ra", isSuccess: false);
-    }
-  }
-
-  Future<void> getDetailBooked() async {
-    try {
-      final idBookHotel = bookedHotel.value.id!;
-      final response = await dio.get("http://192.168.88.53:8080/book_hotel/$idBookHotel");
-      if (response.statusCode == 200) {
-        bookedHotel.value = BookHotelModel.fromMap(response.data);
-        if (bookedHotel.value.checkinTime != null) {
-          checkInTime.text = bookedHotel.value.checkinTime!;
-        }
-        if (bookedHotel.value.checkoutTime != null) {
-          checkOutTime.text = bookedHotel.value.checkoutTime!;
-        }
-      }
-    } catch (e) {
-      print("Lỗi getDetailBooked: $e");
     }
   }
 
@@ -188,15 +190,14 @@ checkOutTimeController.text = bookedHotel.value.checkoutTime ?? "";
     );
     isLoadingRating.value = false;
   }
-Future<void> selectTime(BuildContext context, TextEditingController controller) async {
-  TimeOfDay? picked = await showTimePicker(
-    context: context,
-    initialTime: TimeOfDay.now(),
-  );
-  if (picked != null) {
-    controller.text = "${picked.hour.toString().padLeft(2, '0')}:${picked.minute.toString().padLeft(2, '0')}:00"; 
+
+  Future<void> selectTime(BuildContext context, TextEditingController controller) async {
+    TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: TimeOfDay.now(),
+    );
+    if (picked != null) {
+      controller.text = "${picked.hour.toString().padLeft(2, '0')}:${picked.minute.toString().padLeft(2, '0')}:00";
+    }
   }
-}
-
-
 }

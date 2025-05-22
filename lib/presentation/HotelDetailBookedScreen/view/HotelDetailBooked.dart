@@ -8,8 +8,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:book_hotel/core/util/format_utils.dart';
 
-
-class HotelDetailBooked extends GetView<Controllerhoteldetailbooked> {
+class HotelDetailBooked extends GetView<ControllerHotelDetailBooked> {
   const HotelDetailBooked({super.key});
 
   @override
@@ -264,6 +263,34 @@ class HotelDetailBooked extends GetView<Controllerhoteldetailbooked> {
                                       style: TextStyle(
                                           fontSize: 14.sp, color: Colors.blue),
                                     )
+                                  ],
+                                ),
+                                SizedBox(height: 10.h),
+                                Row(
+                                  children: [
+                                    Text("Loại giường : ",
+                                        style: TextStyle(
+                                            fontSize: 14.sp,
+                                            fontWeight: FontWeight.w600)),
+                                    Text(
+                                        style: TextStyle(
+                                            fontSize: 14.sp,
+                                            color: Colors.blue),
+                                        controller.selectedBedType.value),
+                                  ],
+                                ),
+                                SizedBox(height: 10.h),
+                                Row(
+                                  children: [
+                                    Text("Hạng phòng : ",
+                                        style: TextStyle(
+                                            fontSize: 14.sp,
+                                            fontWeight: FontWeight.w600)),
+                                    Text(
+                                        style: TextStyle(
+                                            fontSize: 14.sp,
+                                            color: Colors.blue),
+                                        controller.selectedRoomType.value),
                                   ],
                                 ),
                               ],

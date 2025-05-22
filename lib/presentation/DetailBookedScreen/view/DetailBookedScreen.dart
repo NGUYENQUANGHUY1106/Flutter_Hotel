@@ -9,7 +9,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:book_hotel/core/util/format_utils.dart';
 
-
 class Detailbookedscreen extends GetView<Controllerdetailbooked> {
   const Detailbookedscreen({super.key});
 
@@ -333,6 +332,71 @@ class Detailbookedscreen extends GetView<Controllerdetailbooked> {
                             decoration: const InputDecoration(
                                 label: Text("Bạn muốn đặt mấy phòng?")),
                           ),
+                          SizedBox(height: 20.h),
+
+                          // Loại giường
+// Loại giường
+                          Obx(() => DropdownButtonFormField<String>(
+                                value: (controller
+                                        .selectedBedType.value.isNotEmpty)
+                                    ? controller.selectedBedType.value
+                                    : null,
+                                onChanged:
+                                    controller.bookedHotel.value.statusBook ==
+                                            Enumstatusbook.WAIT.name
+                                        ? (value) {
+                                            if (value != null)
+                                              controller.selectedBedType.value =
+                                                  value;
+                                          }
+                                        : null,
+                                items: ['Giường đơn', 'Giường đôi']
+                                    .map((type) => DropdownMenuItem<String>(
+                                          value: type,
+                                          child: Text(type,
+                                          style:  TextStyle(fontSize:  13.sp),
+                                          ),
+                                        ))
+                                    .toList(),
+                                decoration: const InputDecoration(
+                                  labelText: "Chọn loại giường",
+                                  prefixIcon: Icon(Icons.bed),
+                                  border: OutlineInputBorder(),
+                                ),
+                              )),
+
+                          SizedBox(height: 20.h),
+
+// Hạng phòng
+                          Obx(() => DropdownButtonFormField<String>(
+                                value: (controller
+                                        .selectedRoomType.value.isNotEmpty)
+                                    ? controller.selectedRoomType.value
+                                    : null,
+                                onChanged: controller
+                                            .bookedHotel.value.statusBook ==
+                                        Enumstatusbook.WAIT.name
+                                    ? (value) {
+                                        if (value != null)
+                                          controller.selectedRoomType.value =
+                                              value;
+                                      }
+                                    : null,
+                                items: ['Standard', 'Deluxe', 'VIP']
+                                    .map((type) => DropdownMenuItem<String>(
+                                          value: type,
+                                          child: Text(type,
+                                          style: TextStyle (fontSize: 13.sp),
+                                          ),
+                                        ))
+                                    .toList(),
+                                decoration: const InputDecoration(
+                                  labelText: "Chọn hạng phòng",
+                                  prefixIcon: Icon(Icons.star),
+                                  border: OutlineInputBorder(),
+                                ),
+                              )),
+
                           SizedBox(
                             height: 20.h,
                           ),

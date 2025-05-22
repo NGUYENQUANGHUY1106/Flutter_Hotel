@@ -1,15 +1,17 @@
 import 'dart:convert';
 
 class RequestBookHotelModel {
-  final int? id;               
-  final int? idHotel;          
-  final int? idUser;            
-  final int totalPrice;        
-  final int countRoom;          
-  final DateTime bookStart;     
-  final DateTime bookEnd;       
-  final String? checkinTime;    
-  final String? checkoutTime;   
+ final int? id;
+  final int? idHotel;
+  final int? idUser;
+  final int totalPrice;
+  final int countRoom;
+  final DateTime bookStart;
+  final DateTime bookEnd;
+  final String? checkinTime;
+  final String? checkoutTime;
+  final String bedType;       
+  final String roomType;    
 
   RequestBookHotelModel({
     this.id,
@@ -21,6 +23,8 @@ class RequestBookHotelModel {
     required this.bookEnd,
     this.checkinTime,
     this.checkoutTime,
+    required this.bedType,
+    required  this.roomType,
   });
 
   Map<String, dynamic> toMap() {
@@ -34,6 +38,8 @@ class RequestBookHotelModel {
       'bookEnd': bookEnd.millisecondsSinceEpoch,
       'checkinTime': checkinTime,
       'checkoutTime': checkoutTime,
+      'bedType': bedType,         
+      'roomType': roomType, 
     };
   }
 
