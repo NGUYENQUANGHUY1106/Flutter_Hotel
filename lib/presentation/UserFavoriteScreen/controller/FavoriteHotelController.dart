@@ -14,8 +14,8 @@ class FavoriteHotelController extends GetxController {
     if (userId == null) return;
 
     try {
-      final res = await dio.get('http://192.168.88.53:8080/mvc_10/api/favorite/$userId');
-      print(" Gọi đến: http://192.168.88.53:8080/mvc_10/api/favorite/$userId");
+      final res = await dio.get('http://192.168.1.202:8080/mvc_10/api/favorite/$userId');
+      print(" Gọi đến: http://192.168.1.202:8080/mvc_10/api/favorite/$userId");
 
       favorites.value =
           (res.data as List).map((e) => FavoriteHotelModel.fromMap(e)).toList();

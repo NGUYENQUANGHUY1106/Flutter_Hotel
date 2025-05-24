@@ -4,7 +4,7 @@
             "outputFile": "com.example.book_hotel.app-mergeDebugResources-38:/values-as/values-as.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\nguye\\.gradle\\caches\\transforms-3\\a819747797622325f1f8b0ce37e033cd\\transformed\\material-1.5.0\\res\\values-as\\values-as.xml",
+                    "source": "C:\\Users\\NITRO 5\\.gradle\\caches\\transforms-3\\a819747797622325f1f8b0ce37e033cd\\transformed\\material-1.5.0\\res\\values-as\\values-as.xml",
                     "from": {
                         "startLines": "2,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\nguye\\.gradle\\caches\\transforms-3\\6069f4c6c6d3d601c161ff9cc2d8fbc6\\transformed\\appcompat-1.6.1\\res\\values-as\\values-as.xml",
+                    "source": "C:\\Users\\NITRO 5\\.gradle\\caches\\transforms-3\\6069f4c6c6d3d601c161ff9cc2d8fbc6\\transformed\\appcompat-1.6.1\\res\\values-as\\values-as.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -40,24 +40,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\nguye\\.gradle\\caches\\transforms-3\\2f6a5506f4dac22f7ab67b13b215ea43\\transformed\\core-1.13.1\\res\\values-as\\values-as.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,156,259,367,472,576,676,805",
-                        "endColumns": "100,102,107,104,103,99,128,100",
-                        "endOffsets": "151,254,362,467,571,671,800,901"
-                    },
-                    "to": {
-                        "startLines": "34,35,36,37,38,39,40,99",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "3097,3198,3301,3409,3514,3618,3718,8502",
-                        "endColumns": "100,102,107,104,103,99,128,100",
-                        "endOffsets": "3193,3296,3404,3509,3613,3713,3842,8598"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\nguye\\.gradle\\caches\\transforms-3\\8bb96117b0f09282d9100503ae2b9eab\\transformed\\browser-1.8.0\\res\\values-as\\values-as.xml",
+                    "source": "C:\\Users\\NITRO 5\\.gradle\\caches\\transforms-3\\8bb96117b0f09282d9100503ae2b9eab\\transformed\\browser-1.8.0\\res\\values-as\\values-as.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -71,6 +54,23 @@
                         "startOffsets": "4151,4413,4519,4627",
                         "endColumns": "107,105,107,105",
                         "endOffsets": "4254,4514,4622,4728"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\NITRO 5\\.gradle\\caches\\transforms-3\\2f6a5506f4dac22f7ab67b13b215ea43\\transformed\\core-1.13.1\\res\\values-as\\values-as.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,156,259,367,472,576,676,805",
+                        "endColumns": "100,102,107,104,103,99,128,100",
+                        "endOffsets": "151,254,362,467,571,671,800,901"
+                    },
+                    "to": {
+                        "startLines": "34,35,36,37,38,39,40,99",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "3097,3198,3301,3409,3514,3618,3718,8502",
+                        "endColumns": "100,102,107,104,103,99,128,100",
+                        "endOffsets": "3193,3296,3404,3509,3613,3713,3842,8598"
                     }
                 }
             ]

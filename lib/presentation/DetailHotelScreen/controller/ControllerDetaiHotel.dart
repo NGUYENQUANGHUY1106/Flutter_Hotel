@@ -40,7 +40,7 @@ class ControllerDetaiHotel extends GetxController {
   Future<void> fetchHotelDetail(int idHotel) async {
     try {
       final response =
-          await dio.get("http://192.168.88.53:8080/hotel/$idHotel");
+          await dio.get("http://192.168.1.43:8080/hotel/$idHotel");
       hotelDetail.value = HotelModel.fromMap(response.data);
       hotel.room = hotelDetail.value?.room;
       hotel.price = hotelDetail.value?.price;
@@ -204,7 +204,7 @@ int roomCount = count;
       final userId = await getIdUser();
       final hotelId = hotel.id;
       await dio.post(
-          "http://192.168.88.53:8080/mvc_10/api/favorite/toggle/$userId/$hotelId");
+          "http://192.168.1.43:8080/mvc_10/api/favorite/toggle/$userId/$hotelId");
       print(" Đã yêu thích khách sạn!");
     } catch (e) {
       print(" Lỗi khi yêu thích khách sạn: $e");

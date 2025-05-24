@@ -65,7 +65,7 @@ class Controllerdetailbooked extends GetxController {
   Future<void> getDetailBooked() async {
   try {
     final idBookHotel = bookedHotel.value.id!;
-final url = "http://192.168.88.53:8080/mvc_10/book_hotel/detail/$idBookHotel";
+final url = "http://192.168.1.43:8080/mvc_10/book_hotel/detail/$idBookHotel";
     print("🔎 Gọi API: $url");
 
     final response = await dio.get(url);
@@ -151,7 +151,7 @@ final url = "http://192.168.88.53:8080/mvc_10/book_hotel/detail/$idBookHotel";
     try {
       final idBookHotel = bookedHotel.value.id!;
       final response = await dio.put(
-        "http://192.168.88.53:8080/mvc_10/book_hotel/$idBookHotel/CHECKOUT",
+        "http://192.168.1.43:8080/mvc_10/book_hotel/$idBookHotel/CHECKOUT",
       );
       if (response.statusCode == 200) {
         Dialogcustom.show(context, "Trả phòng thành công");

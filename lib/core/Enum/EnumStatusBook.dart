@@ -1,1 +1,7 @@
-enum Enumstatusbook { WAIT, COMFIRMED, CANCELLED,CHECKOUT }
+enum Enumstatusbook {
+  WAIT,
+  CONFIRMED,
+  CANCELLED,
+  RETURNED,
+  CHECKOUT,
+}

@@ -90,12 +90,12 @@ class Controllerhomeuser extends GetxController {
       final dio = Dio();
 
       final bookingRes = await dio.get(
-        'http://192.168.137.1:8080/mvc_10/book_hotel/booking-counts/$userId',
+        'http://192.168.1.202:8080/mvc_10/book_hotel/booking-counts/$userId',
       );
       bookingCounts.value = Map<String, int>.from(bookingRes.data);
 
       final favRes = await dio.get(
-        'http://192.168.137.1:8080/mvc_10/api/favorite/count/$userId',
+        'http://192.168.1.202:8080/mvc_10/api/favorite/count/$userId',
       );
       favoriteCount.value = favRes.data;
     } catch (e) {

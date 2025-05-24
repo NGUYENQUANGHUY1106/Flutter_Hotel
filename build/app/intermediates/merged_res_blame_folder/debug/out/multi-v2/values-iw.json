@@ -4,7 +4,7 @@
             "outputFile": "com.example.book_hotel.app-mergeDebugResources-38:/values-iw/values-iw.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\nguye\\.gradle\\caches\\transforms-3\\6069f4c6c6d3d601c161ff9cc2d8fbc6\\transformed\\appcompat-1.6.1\\res\\values-iw\\values-iw.xml",
+                    "source": "C:\\Users\\NITRO 5\\.gradle\\caches\\transforms-3\\6069f4c6c6d3d601c161ff9cc2d8fbc6\\transformed\\appcompat-1.6.1\\res\\values-iw\\values-iw.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -21,7 +21,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\nguye\\.gradle\\caches\\transforms-3\\8bb96117b0f09282d9100503ae2b9eab\\transformed\\browser-1.8.0\\res\\values-iw\\values-iw.xml",
+                    "source": "C:\\Users\\NITRO 5\\.gradle\\caches\\transforms-3\\2f6a5506f4dac22f7ab67b13b215ea43\\transformed\\core-1.13.1\\res\\values-iw\\values-iw.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,149,251,348,445,546,646,752",
+                        "endColumns": "93,101,96,96,100,99,105,100",
+                        "endOffsets": "144,246,343,440,541,641,747,848"
+                    },
+                    "to": {
+                        "startLines": "36,37,38,39,40,41,42,101",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "3102,3196,3298,3395,3492,3593,3693,8357",
+                        "endColumns": "93,101,96,96,100,99,105,100",
+                        "endOffsets": "3191,3293,3390,3487,3588,3688,3794,8453"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\NITRO 5\\.gradle\\caches\\transforms-3\\8bb96117b0f09282d9100503ae2b9eab\\transformed\\browser-1.8.0\\res\\values-iw\\values-iw.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -38,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\nguye\\.gradle\\caches\\transforms-3\\a819747797622325f1f8b0ce37e033cd\\transformed\\material-1.5.0\\res\\values-iw\\values-iw.xml",
+                    "source": "C:\\Users\\NITRO 5\\.gradle\\caches\\transforms-3\\a819747797622325f1f8b0ce37e033cd\\transformed\\material-1.5.0\\res\\values-iw\\values-iw.xml",
                     "from": {
                         "startLines": "2,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -54,23 +71,6 @@
                         "endLines": "7,35,43,44,45,47,48,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88,89,90,91,92,93,94,95,96,97,98,99",
                         "endColumns": "12,76,92,112,79,64,87,69,62,91,59,58,62,60,58,101,56,58,57,67,110,80,81,101,70,72,87,66,65,72,75,85,69,74,81,67,84,69,89,90,73,72,88,50,66,81,84,61,63,62,93,94,89,95,74",
                         "endOffsets": "364,3097,3887,4000,4080,4236,4324,4702,4765,4857,4917,4976,5039,5100,5159,5261,5318,5377,5435,5503,5614,5695,5777,5879,5950,6023,6111,6178,6244,6317,6393,6479,6549,6624,6706,6774,6859,6929,7019,7110,7184,7257,7346,7397,7464,7546,7631,7693,7757,7820,7914,8009,8099,8195,8270"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\nguye\\.gradle\\caches\\transforms-3\\2f6a5506f4dac22f7ab67b13b215ea43\\transformed\\core-1.13.1\\res\\values-iw\\values-iw.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,149,251,348,445,546,646,752",
-                        "endColumns": "93,101,96,96,100,99,105,100",
-                        "endOffsets": "144,246,343,440,541,641,747,848"
-                    },
-                    "to": {
-                        "startLines": "36,37,38,39,40,41,42,101",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "3102,3196,3298,3395,3492,3593,3693,8357",
-                        "endColumns": "93,101,96,96,100,99,105,100",
-                        "endOffsets": "3191,3293,3390,3487,3588,3688,3794,8453"
                     }
                 }
             ]

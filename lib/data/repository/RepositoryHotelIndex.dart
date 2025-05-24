@@ -27,7 +27,31 @@ class Repositoryhotelindex {
      }
      return 0.0;
    }
+  Future<int> getAvailableRooms(int idUser) async {
+    try {
+      final response =
+          await dio.get("${Endpointcustomer.getAvailableRoomByUserId}/$idUser");
+      if (response.statusCode == 200) {
+        return response.data as int;
+      }
+    } catch (e) {
+      print("Lỗi getAvailableRooms: $e");
     }
+    return 0;
+  }
+  Future<Map<String, int>> getBookingCounts(int idUser) async {
+    try {
+      final response =
+          await dio.get("${Endpointcustomer.getBookingStatusCount}/$idUser");
+      if (response.statusCode == 200) {
+        return Map<String, int>.from(response.data);
+      }
+    } catch (e) {
+      print("Lỗi getBookingCounts: $e");
+    }
+    return {};
+  }
+}
  
 
 

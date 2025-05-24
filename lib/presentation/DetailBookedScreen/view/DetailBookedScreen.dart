@@ -571,7 +571,7 @@ class Detailbookedscreen extends GetView<Controllerdetailbooked> {
                         SizedBox(width: 10.w),
                         Visibility(
                           visible: controller.bookedHotel.value.statusBook ==
-                              Enumstatusbook.COMFIRMED.name,
+                              Enumstatusbook.CONFIRMED.name,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.black),
@@ -583,7 +583,7 @@ class Detailbookedscreen extends GetView<Controllerdetailbooked> {
                         // 🆕 Nút trả phòng mới
                         Visibility(
                           visible: controller.bookedHotel.value.statusBook ==
-                              Enumstatusbook.COMFIRMED.name,
+                              Enumstatusbook.CONFIRMED.name,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: Colors.green),

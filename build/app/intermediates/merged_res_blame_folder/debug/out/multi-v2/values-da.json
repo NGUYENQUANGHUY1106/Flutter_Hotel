@@ -4,7 +4,7 @@
             "outputFile": "com.example.book_hotel.app-mergeDebugResources-38:/values-da/values-da.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\nguye\\.gradle\\caches\\transforms-3\\a819747797622325f1f8b0ce37e033cd\\transformed\\material-1.5.0\\res\\values-da\\values-da.xml",
+                    "source": "C:\\Users\\NITRO 5\\.gradle\\caches\\transforms-3\\a819747797622325f1f8b0ce37e033cd\\transformed\\material-1.5.0\\res\\values-da\\values-da.xml",
                     "from": {
                         "startLines": "2,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -23,24 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\nguye\\.gradle\\caches\\transforms-3\\2f6a5506f4dac22f7ab67b13b215ea43\\transformed\\core-1.13.1\\res\\values-da\\values-da.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,7,8,9",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,151,253,350,448,555,664,782",
-                        "endColumns": "95,101,96,97,106,108,117,100",
-                        "endOffsets": "146,248,345,443,550,659,777,878"
-                    },
-                    "to": {
-                        "startLines": "34,35,36,37,38,39,40,99",
-                        "startColumns": "4,4,4,4,4,4,4,4",
-                        "startOffsets": "3007,3103,3205,3302,3400,3507,3616,8427",
-                        "endColumns": "95,101,96,97,106,108,117,100",
-                        "endOffsets": "3098,3200,3297,3395,3502,3611,3729,8523"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\nguye\\.gradle\\caches\\transforms-3\\6069f4c6c6d3d601c161ff9cc2d8fbc6\\transformed\\appcompat-1.6.1\\res\\values-da\\values-da.xml",
+                    "source": "C:\\Users\\NITRO 5\\.gradle\\caches\\transforms-3\\6069f4c6c6d3d601c161ff9cc2d8fbc6\\transformed\\appcompat-1.6.1\\res\\values-da\\values-da.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -57,7 +40,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\nguye\\.gradle\\caches\\transforms-3\\8bb96117b0f09282d9100503ae2b9eab\\transformed\\browser-1.8.0\\res\\values-da\\values-da.xml",
+                    "source": "C:\\Users\\NITRO 5\\.gradle\\caches\\transforms-3\\8bb96117b0f09282d9100503ae2b9eab\\transformed\\browser-1.8.0\\res\\values-da\\values-da.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -71,6 +54,23 @@
                         "startOffsets": "4061,4323,4422,4529",
                         "endColumns": "111,98,106,96",
                         "endOffsets": "4168,4417,4524,4621"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\NITRO 5\\.gradle\\caches\\transforms-3\\2f6a5506f4dac22f7ab67b13b215ea43\\transformed\\core-1.13.1\\res\\values-da\\values-da.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,151,253,350,448,555,664,782",
+                        "endColumns": "95,101,96,97,106,108,117,100",
+                        "endOffsets": "146,248,345,443,550,659,777,878"
+                    },
+                    "to": {
+                        "startLines": "34,35,36,37,38,39,40,99",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "3007,3103,3205,3302,3400,3507,3616,8427",
+                        "endColumns": "95,101,96,97,106,108,117,100",
+                        "endOffsets": "3098,3200,3297,3395,3502,3611,3729,8523"
                     }
                 }
             ]

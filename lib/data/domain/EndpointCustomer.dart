@@ -8,4 +8,6 @@ class Endpointcustomer {
    static const String addRate = "/rate";
    static const String getAllRate = "/rate";
    static const String getDoanhThu = "/hotel/totalMoney";
+   static const String getBookingStatusCount = "/hotel/bookings/count";
+  static const String getAvailableRoomByUserId = "/hotel/available-rooms";
  }
